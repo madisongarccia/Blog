@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Data Curation Blog Post
-date: 2024-03-28
+date: 2024-03-20
 description: 
 image: "/assets/img/LA_blog.jpg"
 display_image: false  # change this to true to display the image below the banner 
