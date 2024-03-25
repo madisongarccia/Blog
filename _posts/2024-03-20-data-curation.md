@@ -32,7 +32,7 @@ In Python, I used the `webdriver` from the Selenium package to launch Chrome, wh
 
 1. Find the url of the site you would like to scrape
 
-For this blog, I used Indeed, and narrowed my job search to [within 25 miles of Los Angeles](https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918). I could then use `webdriver.Chrome()` to launch Chrome.
+For this blog, I used Indeed, narrowed my job search to [within 25 miles of Los Angeles](https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918), and got the url below. I could then use `webdriver.Chrome()` to launch Chrome.
 {%- highlight python -%}
 url = 'https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918'
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
@@ -42,20 +42,24 @@ More information on Selenium's WebDriver for debugging purposes can be found [he
 
 2. Containers and Pagination
 
-Before collecting specific job data, I need to find in the HTML where the [container](https://www.w3schools.com/w3css/w3css_containers.asp) for all the jobs is located. This way, I can locate within that container, all the individual job elements. This list of all job elements on a page can be used later in my code to iterate through. Below is an exmaple of how I found both of these elements in my code.
+Before collecting specific job data, I need to find in the HTML where the [container](https://www.w3schools.com/w3css/w3css_containers.asp) for all the jobs is located. This way, I can locate within that container, all the individual job elements. This list of all job elements on a page can be used later in my code to iterate through. Below is an example of how I found both of these elements in my code.
 {%- highlight python -%}
 container = driver.find_element(By.XPATH, 
                                 ".//div[contains(@id, 'mosaic-jobResults')]")
-    all_jobs = container.find_elements(By.XPATH, 
+all_jobs = container.find_elements(By.XPATH, 
                                 ".//div[contains(@class, 'job_seen_beacon')]")
 {%- endhighlight -%}
 Guide on [`.find_element(s)`](https://selenium-python.readthedocs.io/locating-elements.html)
+
+The variable `all_jobs` should now be a list containing each job card on the first page. 
+
+![Figure]({{site.url}}/{{site.baseurl}}/assets/img/sample_card.png)
 
 After looking at all 15 jobs on the first page, I would also like my web-scraper to be able to click to the next page if applicable, and continue gathering information from multiple pages. To do this, I need a pagination variable and to find the next button. Pagination refers to the navigation bar at the bottom on websites that have multiple pages you can move between.
 
 ![Figure]({{site.url}}/{{site.baseurl}}/assets/img/navigation.png)
 
-There should also be HTML code within the pagination that represents the next button you can click. We want to locate that, save it as a `next` button variable, and use `next.click()` to go to the next page. 
+There should also be HTML code within the specific pagination tag that represents the next button you can click. We want to locate that, save it as a `next` button variable, and use `next.click()` to go to the next page. 
 
 {%- highlight python -%}
 pagination = driver.find_element(By.XPATH, ".//nav[contains(@role, 'navigation')]")
