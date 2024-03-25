@@ -30,13 +30,30 @@ In Python, I used the `webdriver` from the Selenium package to launch Chrome, wh
 
 ### Building a Working Web-Scraper
 
-1. Find the url of the site you would like to scrape. For this blog, I used Indeed, and narrowed my job search to [within 25 miles of Los Angeles](https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918). I could then use `webdriver.Chrome()` to launch Chrome.
+1. Find the url of the site you would like to scrape
+
+For this blog, I used Indeed, and narrowed my job search to [within 25 miles of Los Angeles](https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918). I could then use `webdriver.Chrome()` to launch Chrome.
 {%- highlight python -%}
 url = 'https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918'
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.get(url)
 {%- endhighlight -%}
 More information on Selenium's WebDriver for debugging purposes can be found [here](https://www.selenium.dev/documentation/webdriver/).
+
+2. What information would you like to gather?
+
+For this particular dataset, I was most interested in finding what I could on the following categories:
+
+* Job Title
+* Company Name
+* Location (City and State)
+* Salary Amount
+* Job Description
+* How long ago was this posted?
+* Company Rating
+* Location Type (On-Site, Hybrid, Remote)
+
+Most of this information was readily available on the job postings, however, some needed a bit of extra work to find. 
 
 
 https://www.blog.datahut.co/post/scrape-indeed-using-selenium-and-beautifulsoup
