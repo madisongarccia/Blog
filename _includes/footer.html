@@ -1,0 +1,46 @@
+<div class="footer">
+	<div class="container">
+		<p class="copy">
+			&copy; {{ site.time | date: '%Y' }}
+		
+			{% if site.social.website %}
+				<a href="{{ site.social.website }}" target="_blank"> {{ site.author }}</a>
+			{% else %}
+				<a href="https://github.com/{{ site.social.github }}" target="_blank"> {{ site.author }}</a>
+			{% endif %}. Powered by
+			<a href="http://jekyllrb.com">Jekyll</a>
+			and adapted from <a href="https://github.com/brianmaierjr/long-haul" target="_blank"> Long-Haul </a>.
+		</p>
+		
+
+		<div class="footer-links">
+			<ul class="noList">
+				{%- if site.social.facebook -%}
+					{%- include footer_links/facebook_icon.html -%}
+				{%- endif -%}
+				{%- if site.social.twitter -%}
+					{%- include footer_links/twitter_icon.html -%}
+				{%- endif -%}
+				{%- if site.social.linkedin -%}
+					{%- include footer_links/linkedin_icon.html -%}
+				{%- endif -%}
+				{%- if site.social.github -%}
+					{%- include footer_links/github_icon.html -%}
+				{%- endif -%}
+				{%- if site.social.tumblr -%}
+					{%- include footer_links/tumblr_icon.html -%}
+				{%- endif -%}
+				{%- if site.social.youtube -%}
+					{%- include footer_links/youtube_icon.html -%}
+				{%- endif -%}
+				{%- if site.social.email -%}
+					{%- include footer_links/email_icon.html -%}
+				{%- endif -%}
+				{%- if site.social.website -%}
+				{%- include footer_links/website_icon.html -%}
+			{%- endif -%}
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- end .footer -->
