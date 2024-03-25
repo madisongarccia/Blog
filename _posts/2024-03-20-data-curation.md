@@ -58,8 +58,10 @@ Guide on [`.find_element(s)`](https://selenium-python.readthedocs.io/locating-el
 
 The variable `all_jobs` should now be a list containing each job card on the first page. 
 
-<img src="{{site.url}}/{{site.baseurl}}/assets/img/sample_card.png" alt="Sample Job Card" width="300" height="400">
-
+<figure>
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/sample_card.png" alt="Description of image" style="width:300px;height:350px;">
+  <figcaption>Sample Job Card</figcaption>
+</figure>
 
 After looking at all 15 jobs on the first page, I would also like my web-scraper to be able to click to the next page if applicable, and continue gathering information from multiple pages. To do this, I need a pagination variable and to find the next button. Pagination refers to the navigation bar at the bottom on websites that have multiple pages you can move between.
 
