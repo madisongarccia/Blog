@@ -26,5 +26,17 @@ The short answer is [yes](https://www.octoparse.com/blog/how-to-scrape-indeed-jo
 
 ![Figure]({{site.url}}/{{site.baseurl}}/assets/img/toolbox.png)
 
+In Python, I used the `webdriver` from the Selenium package to launch Chrome, which is the browser I am most familiar with using. I additionally used Numpy and Pandas which are also Python libraries to conduct EDA on my data once it was gathered. 
+
+### Building a Working Web-Scraper
+
+1. Find the url of the site you would like to scrape. For this blog, I used Indeed, and narrowed my job search to [within 25 miles of Los Angeles](https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918). I could then use `webdriver.Chrome()` to launch Chrome.
+{%- highlight python -%}
+url = 'https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918'
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+driver.get(url)
+{%- endhighlight -%}
+
+
 
 https://www.blog.datahut.co/post/scrape-indeed-using-selenium-and-beautifulsoup
