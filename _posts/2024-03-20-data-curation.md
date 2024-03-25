@@ -40,7 +40,18 @@ driver.get(url)
 {%- endhighlight -%}
 More information on Selenium's WebDriver for debugging purposes can be found [here](https://www.selenium.dev/documentation/webdriver/).
 
-2. What information would you like to gather?
+2. Containers and Pagination
+
+Before collecting specific job data, I need to find in the HTML where the [container](https://www.w3schools.com/w3css/w3css_containers.asp) for all the jobs is located. This way, I can locate within that container, where all the job elements are. This list of job elements can be used later in my code to iterate through. Below is an exmaple of how I found both of these elements in my code.
+{%- highlight python -%}
+container = driver.find_element(By.XPATH, 
+                                ".//div[contains(@id, 'mosaic-jobResults')]")
+    all_jobs = container.find_elements(By.XPATH, 
+                                ".//div[contains(@class, 'job_seen_beacon')]")
+{%- endhighlight -%}
+After looking at all 15 jobs on the first page, I would also like my web-scraper to be a
+
+3. What information would you like to gather?
 
 For this particular dataset, I was most interested in finding what I could on the following categories:
 
@@ -53,7 +64,7 @@ For this particular dataset, I was most interested in finding what I could on th
 * Company Rating
 * Location Type (On-Site, Hybrid, Remote)
 
-Most of this information was readily available on the job postings, however, some needed a bit of extra work to find. 
+Most of this information was readily available on the job postings, however, some needed a bit of extra work to find. In order to gather this data, I wrote some code that will iterate through each page 
 
 
 https://www.blog.datahut.co/post/scrape-indeed-using-selenium-and-beautifulsoup
