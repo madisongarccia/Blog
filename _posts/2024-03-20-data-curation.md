@@ -8,6 +8,9 @@ display_image: false  # change this to true to display the image below the banne
 ---
 
 # Introduction
+
+***
+
 <p class="intro"><span class="dropcap">L</span>anding a job fresh out of college can be a tough feat, especially for those trying to find a job in Los Angeles, California. Born and raised in and around the city, I have always planned on returning to the Los Angeles area after college. However, what I did not consider while drawing up this plan, was the current state of the job market. </p>
 
 ### Job Outlook for 2024
@@ -17,6 +20,8 @@ Position openings for newly-graduated students have on average, been cut in half
 As a student quickly approaching her graduation date, I have taken a strong interest in determining for myself what jobs in my field are currently available in Los Angeles. For this blog, I have chosen to scrape job data for Data Scientist positions from Indeed because it is one of the most popular online job boards throughout the country. In this post, I will explain how and why I was able to use Indeed's website to gather valuable job data in Los Angeles.
 
 # Acquiring the Data
+
+***
 
 ### Is This Data Free?
 
@@ -54,6 +59,10 @@ Guide on [`.find_element(s)`](https://selenium-python.readthedocs.io/locating-el
 The variable `all_jobs` should now be a list containing each job card on the first page. 
 
 ![Figure]({{site.url}}/{{site.baseurl}}/assets/img/sample_card.png)
+sample job card
+
+<img src="{{site.url}}/{{site.baseurl}}/assets/img/sample_card.png" alt="Description of image" width="300" height="200">
+
 
 After looking at all 15 jobs on the first page, I would also like my web-scraper to be able to click to the next page if applicable, and continue gathering information from multiple pages. To do this, I need a pagination variable and to find the next button. Pagination refers to the navigation bar at the bottom on websites that have multiple pages you can move between.
 
@@ -68,6 +77,7 @@ next = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By XPATH, "./
 next.click()
 {%- endhighlight -%}
 
+At this point, we should have the general navigational tools, and job card information necessary to carry out our data extraction. 
 
 3. What information would you like to gather?
 
@@ -82,7 +92,8 @@ For this particular dataset, I was most interested in finding what I could on th
 * Company Rating
 * Location Type (On-Site, Hybrid, Remote)
 
-Most of this information was readily available on the job postings, however, some needed a bit of extra work to find. In order to gather this data, I wrote some code that will iterate through each page 
+Most of this information was readily available on the job postings, but in order to gather this data, I needed to locate where each item would be found in the HTML code. 
+
 
 
 https://www.blog.datahut.co/post/scrape-indeed-using-selenium-and-beautifulsoup
