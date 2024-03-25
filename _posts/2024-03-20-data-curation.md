@@ -36,7 +36,7 @@ url = 'https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.get(url)
 {%- endhighlight -%}
-
+More information on Selenium's WebDriver for debugging purposes can be found [here](https://www.selenium.dev/documentation/webdriver/).
 
 
 https://www.blog.datahut.co/post/scrape-indeed-using-selenium-and-beautifulsoup
