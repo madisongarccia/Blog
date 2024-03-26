@@ -131,7 +131,14 @@ for job in all_jobs:
 When scraping data from a website, a lot of the time the data will require some serious cleaning! For example, I really wanted my salary data to be floats, but that would be difficult had I left them as strings with `$` and/or `,` contained in it. It can also be noted that in my initial scrape, I was not able to get any information for my `Modality` column. This is because the different modalities were part of the location strings. This means I also had to separate the locations and determine whether or not it had the keywords that could help sort into my three modality categories: `Hybrid`, `Remote`, and `On-Site`. 
 
 After making the necessary improvements to my data, I was able to create the final cleaned dataframe below.
-![Figure]({{site.url}}/{{site.baseurl}}/assets/img/final_df.png)
+<figure>
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/final_df.png" alt="Description of image" style="width:500px;height:500px;">
+</figure>
+
+# Conclusion
+
+***
+
 
 
 
