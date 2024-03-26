@@ -23,7 +23,7 @@ As a student quickly approaching her graduation date, I have taken a strong inte
 
 ***
 
-### Is This Data Free?
+### Is Using This Data Allowed?
 
 The short answer is [yes](https://www.octoparse.com/blog/how-to-scrape-indeed-job-posting)! Any information that can be attained from their API is allowed to be scraped. After researching the [Indeed API](https://docs.indeed.com/authorization?&aceid=&kw=adwords_c_9099621460_15516767951_0_0_pmax&sid=us_googconthajpmax-_c__g_9029857_gclid$_CjwKCAjwnv-vBhBdEiwABCYQAyn4D7OoUEYp552th-4b5uSocahCW9RYp4xqVSJ_BKgjCXaRYRMdfhoCmhEQAvD_BwE&gad_source=1&gclid=CjwKCAjwnv-vBhBdEiwABCYQAyn4D7OoUEYp552th-4b5uSocahCW9RYp4xqVSJ_BKgjCXaRYRMdfhoCmhEQAvD_BwE&gclsrc=aw.ds), it turns out a lot of work goes into using the API, and creating your own scraper is much easier to do. As long as you are using public job data (no personal info) and have legal uses for the data, there should be no problem scraping what you need. 
 
@@ -132,7 +132,7 @@ When scraping data from a website, a lot of the time the data will require some 
 
 After making the necessary improvements to my data, I was able to create the final cleaned dataframe below.
 <figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/final_df.png" alt="Description of image" style="width:700px;height:500px;">
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/final_df.png" alt="Description of image" style="width:900px;height:500px;">
 </figure>
 
 # Conclusion
