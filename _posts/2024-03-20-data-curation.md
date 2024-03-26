@@ -2,7 +2,7 @@
 layout: post
 title:  "A College Student's Quest to Find a Job in Los Angeles"
 date: 2024-03-20
-description: Finding a job can be tough regardless of location... so why not use our skills as data scientists to make things a little easier? This blog post will describe how I was able to pull data from one of the most popular online job boards, and prepare it for future data exploration. This will all be done in hopes of gaining a better picture of what to expect in the LA job market. 
+description: Finding a job can be tough regardless of location ... so why not use our skills as data scientists to make things a little easier? This blog post will describe how I was able to pull data from one of the most popular online job boards, and prepare it for future data exploration. This will all be done in hopes of gaining a better picture of what to expect in the LA job market. 
 image: "/assets/img/LA_blog.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
@@ -11,7 +11,7 @@ display_image: false  # change this to true to display the image below the banne
 
 ***
 
-<p class="intro"><span class="dropcap">L</span>anding a job fresh out of college can be a tough feat, especially for those trying to find a job in Los Angeles, California. Born and raised in and around the city, I have always planned on returning to the Los Angeles area after college. However, what I did not consider while drawing up this plan, was the current state of the job market, which leads me to wonder what opportunities are really out there. </p>
+<p class="intro"><span class="dropcap">L</span>anding a job fresh out of college can be a tough feat, especially for those of us trying to find a job in Los Angeles, California. Born and raised in and around the city, I have always planned on returning to the Los Angeles area after college. However, what I did not consider while drawing up this plan, was the current state of the job market, which lead me to wonder what opportunities are really out there. </p>
 
 ### Job Outlook for 2024
 Position openings for newly-graduated students have on average, been cut in half since 2023 and the average time needed to acquire a job lies around [6 months](https://www.linkedin.com/pulse/job-outlook-class-2024-getting-college-grads-hired-7npce/). Many employers are now also requiring more [experience](https://nextgreatstep.com/should-college-grads-fake-it-until-they-make-it/) than the average college graduate currently has. This added experience can include problem-solving skills, business communication, and leadership. 
@@ -93,7 +93,7 @@ For this particular dataset, I was most interested in finding what I could on th
 * `Job_Description` - Job Description
 * `When_Posted` - How long ago was this posted?
 * `Rating` - Company Rating
-* `Modality` - Location Type (On-Site, Hybrid, Remote)
+* `Work_Environment` - Location Type (On-Site, Hybrid, Remote)
 
 Most of this information was readily available on the job postings, but in order to gather this data, I needed to locate where each item would be found in the HTML code. 
 
@@ -128,11 +128,11 @@ for job in all_jobs:
     posted.append(when_posted)
 {%- endhighlight -%}
 
-When scraping data from a website, the data can often require some serious cleaning! For example, I really wanted my salary data to be floats, but that would be difficult had I left them as strings with `$` and/or `,` contained in it. It can also be noted that in my initial scrape, I was not able to get any information for my `Modality` column. This is because the different modalities were part of the location strings. This means I also had to separate the locations and determine whether or not it had the keywords that could help sort into my three modality categories: `Hybrid`, `Remote`, and `On-Site`. 
+When scraping data from a website, the data can often require some serious cleaning! For example, I really wanted my salary data to be floats, but that would be difficult had I left them as strings with `$` and/or `,` contained in it. It can also be noted that in my initial scrape, I was not able to get any information for my `Work_Environment` column. This is because the different evironment types were part of the location strings. This means I also had to separate the locations and determine whether or not it had the keywords that could help sort into my three categories: `Hybrid`, `Remote`, and `On-Site`. 
 
 After making the necessary improvements to my data, I was able to create the final cleaned dataframe below.
 <figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/final_df.png" alt="Description of image" style="width:1100px;height:400px;">
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/dc_df.png" alt="Description of image" style="width:1100px;height:400px;">
 </figure>
 
 # Conclusion
