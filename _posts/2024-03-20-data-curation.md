@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "A College Student's Quest to Find a Job in Los Angeles, CA"
+title:  "A College Student's Quest to Find a Job in Los Angeles"
 date: 2024-03-20
 description: 
 image: "/assets/img/LA_blog.jpg"
-display_image: false  # change this to true to display the image below the banner 
+display_image: true  # change this to true to display the image below the banner 
 ---
 
 # Introduction
