@@ -93,9 +93,14 @@ For this particular dataset, I was most interested in finding what I could on th
 * `Job_Description` - Job Description
 * `When_Posted` - How long ago was this posted?
 * `Rating` - Company Rating
-* `Is_Hybrid_Remote` - Location Type (On-Site, Hybrid, Remote)
+* `Modality` - Location Type (On-Site, Hybrid, Remote)
 
 Most of this information was readily available on the job postings, but in order to gather this data, I needed to locate where each item would be found in the HTML code. 
+
+In the code provided below:
+* `all_jobs` refers to the list of job cards found above
+* `job.find_element` searches for the occurence of a given XPATH within a single job posting
+* Many job cards ordered their `Location` and `Salary` details differently, so the two try/excepts handle these cases
 
 {%- highlight python -%}
 for job in all_jobs:
@@ -122,5 +127,7 @@ for job in all_jobs:
     company_locations.append(location)
     posted.append(when_posted)
 {%- endhighlight -%}
+
+When scraping data from a website, a lot of the time it will require some serious cleaning! For example, I really wanted to use my salary data to perform some EDA, but that would be difficult had I left them as strings, and with `$` and/or `,` contained in it. It can also be noted that in my initial scrape, I was not able to get any information for my `Modality` column. This is because the different modalities were part of the location strings. This means I also had to separate the locations and determine whether or not it had the keywords that could help sort 
 
 https://www.blog.datahut.co/post/scrape-indeed-using-selenium-and-beautifulsoup
