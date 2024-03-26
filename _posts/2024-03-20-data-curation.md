@@ -88,7 +88,7 @@ For this particular dataset, I was most interested in finding what I could on th
 
 * `Title` - Job Title
 * `Company` - Company Name
-* `Location` - City and State
+* `City` and `State`
 * `Pay` - Salary Amount
 * `Job_Description` - Job Description
 * `When_Posted` - How long ago was this posted?
@@ -128,6 +128,11 @@ for job in all_jobs:
     posted.append(when_posted)
 {%- endhighlight -%}
 
-When scraping data from a website, a lot of the time it will require some serious cleaning! For example, I really wanted to use my salary data to perform some EDA, but that would be difficult had I left them as strings, and with `$` and/or `,` contained in it. It can also be noted that in my initial scrape, I was not able to get any information for my `Modality` column. This is because the different modalities were part of the location strings. This means I also had to separate the locations and determine whether or not it had the keywords that could help sort 
+When scraping data from a website, a lot of the time the data will require some serious cleaning! For example, I really wanted my salary data to be floats, but that would be difficult had I left them as strings with `$` and/or `,` contained in it. It can also be noted that in my initial scrape, I was not able to get any information for my `Modality` column. This is because the different modalities were part of the location strings. This means I also had to separate the locations and determine whether or not it had the keywords that could help sort into my three modality categories: `Hybrid`, `Remote`, and `On-Site`. 
+
+After making the necessary improvements to my data, I was able to create the final cleaned dataframe below.
+![Figure]({{site.url}}/{{site.baseurl}}/assets/img/final_df.png)
+
+
 
 https://www.blog.datahut.co/post/scrape-indeed-using-selenium-and-beautifulsoup
