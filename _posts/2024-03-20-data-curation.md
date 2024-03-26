@@ -11,13 +11,13 @@ display_image: false  # change this to true to display the image below the banne
 
 ***
 
-<p class="intro"><span class="dropcap">L</span>anding a job fresh out of college can be a tough feat, especially for those trying to find a job in Los Angeles, California. Born and raised in and around the city, I have always planned on returning to the Los Angeles area after college. However, what I did not consider while drawing up this plan, was the current state of the job market. </p>
+<p class="intro"><span class="dropcap">L</span>anding a job fresh out of college can be a tough feat, especially for those trying to find a job in Los Angeles, California. Born and raised in and around the city, I have always planned on returning to the Los Angeles area after college. However, what I did not consider while drawing up this plan, was the current state of the job market, which leads me to wonder what opportunities are really out there. </p>
 
 ### Job Outlook for 2024
-Position openings for newly-graduated students have on average, been cut in half since 2023, and the average time needed to acquire a job lies around [6 months](https://www.linkedin.com/pulse/job-outlook-class-2024-getting-college-grads-hired-7npce/). Many employers are now also requiring more [experience](https://nextgreatstep.com/should-college-grads-fake-it-until-they-make-it/) than the average college graduate currently has, such as problem-solving skills, business communication, and leadership. 
+Position openings for newly-graduated students have on average, been cut in half since 2023 and the average time needed to acquire a job lies around [6 months](https://www.linkedin.com/pulse/job-outlook-class-2024-getting-college-grads-hired-7npce/). Many employers are now also requiring more [experience](https://nextgreatstep.com/should-college-grads-fake-it-until-they-make-it/) than the average college graduate currently has. This added experience can include problem-solving skills, business communication, and leadership. 
 
 ### Motivation 
-As a student quickly approaching her graduation date, I have taken a strong interest in determining for myself what jobs in my field are currently available in Los Angeles. For this blog, I have chosen to scrape job data for Data Scientist positions from Indeed because it is one of the most popular online job boards throughout the country. In this post, I will explain how and why I was able to use Indeed's website to gather valuable job data in Los Angeles.
+As a student quickly approaching her graduation date, I have taken a strong interest in determining for myself what jobs in my field are currently available in Los Angeles. For this blog, I have chosen to scrape job data for Data Scientist positions (or similar) from Indeed because it is one of the most popular online job boards throughout the country. In this post, I will explain how I was able to use Indeed's website to gather valuable job data in Los Angeles, and what steps I took to make the data more usable for future EDA purposes. 
 
 # Acquiring the Data
 
@@ -25,19 +25,19 @@ As a student quickly approaching her graduation date, I have taken a strong inte
 
 ### Is Using This Data Allowed?
 
-The short answer is [yes](https://www.octoparse.com/blog/how-to-scrape-indeed-job-posting)! Any information that can be attained from their API is allowed to be scraped. After researching the [Indeed API](https://docs.indeed.com/authorization?&aceid=&kw=adwords_c_9099621460_15516767951_0_0_pmax&sid=us_googconthajpmax-_c__g_9029857_gclid$_CjwKCAjwnv-vBhBdEiwABCYQAyn4D7OoUEYp552th-4b5uSocahCW9RYp4xqVSJ_BKgjCXaRYRMdfhoCmhEQAvD_BwE&gad_source=1&gclid=CjwKCAjwnv-vBhBdEiwABCYQAyn4D7OoUEYp552th-4b5uSocahCW9RYp4xqVSJ_BKgjCXaRYRMdfhoCmhEQAvD_BwE&gclsrc=aw.ds), it turns out a lot of work goes into using the API, and creating your own scraper is much easier to do. As long as you are using public job data (no personal info) and have legal uses for the data, there should be no problem scraping what you need. 
+The short answer is [yes](https://www.octoparse.com/blog/how-to-scrape-indeed-job-posting)! Any information that can be attained from Indeed's web API is allowed to be scraped. After researching the [Indeed API](https://docs.indeed.com/authorization?&aceid=&kw=adwords_c_9099621460_15516767951_0_0_pmax&sid=us_googconthajpmax-_c__g_9029857_gclid$_CjwKCAjwnv-vBhBdEiwABCYQAyn4D7OoUEYp552th-4b5uSocahCW9RYp4xqVSJ_BKgjCXaRYRMdfhoCmhEQAvD_BwE&gad_source=1&gclid=CjwKCAjwnv-vBhBdEiwABCYQAyn4D7OoUEYp552th-4b5uSocahCW9RYp4xqVSJ_BKgjCXaRYRMdfhoCmhEQAvD_BwE&gclsrc=aw.ds), it turns out a lot of work goes into using the API, and creating your own scraper is much easier to do. As long as you are using public job data (no personal info) and have legal uses for the data, there should be no problem scraping what you need. 
 
 ### My Data Collection Toolbox
 
 ![Figure]({{site.url}}/{{site.baseurl}}/assets/img/toolbox.png)
 
-In Python, I used the `webdriver` from the Selenium package to launch Chrome, which is the browser I am most familiar with using. I additionally used Numpy and Pandas which are also Python libraries to conduct EDA on my data once it was gathered. 
+In Python, I used `webdriver` from the Selenium package to launch Chrome, which is the browser I am most familiar with using. I additionally used Numpy and Pandas which are also Python libraries to clean my data once it was gathered. 
 
 ### Building a Working Web-Scraper
 
-1. Find the url of the site you would like to scrape
+#### Step 1. Find the url of the site you would like to scrape
 
-For this blog, I used Indeed, narrowed my job search to [within 25 miles of Los Angeles](https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918), and got the url below. I could then use `webdriver.Chrome()` to launch Chrome.
+For this blog, I used Indeed, narrowed my job search to [within 25 miles of Los Angeles](https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918), and got the url shown below. I could then use `webdriver.Chrome()` to launch Chrome.
 {%- highlight python -%}
 url = 'https://www.indeed.com/jobs?q=Data+Science&l=Los+Angeles%2C+CA&vjk=74cadd03cb0dd918'
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
@@ -45,9 +45,9 @@ driver.get(url)
 {%- endhighlight -%}
 More information on Selenium's WebDriver for debugging purposes can be found [here](https://www.selenium.dev/documentation/webdriver/).
 
-2. Containers and Pagination
+#### Step 2. Containers and Pagination
 
-Before collecting specific job data, I need to find in the HTML where the [container](https://www.w3schools.com/w3css/w3css_containers.asp) for all the jobs is located. This way, I can locate within that container, all the individual job elements. This list of all job elements on a page can be used later in my code to iterate through. Below is an example of how I found both of these elements in my code.
+Before collecting specific job data, I had to find in the HTML where the [container](https://www.w3schools.com/w3css/w3css_containers.asp) for all the jobs is located. This way, I can locate within that container, all the individual job elements. This list of all job elements on a page can be used later in my code to iterate through. Below is an example of how I found both of these elements in my code.
 {%- highlight python -%}
 container = driver.find_element(By.XPATH, 
                                 ".//div[contains(@id, 'mosaic-jobResults')]")
@@ -63,11 +63,11 @@ The variable `all_jobs` should now be a list containing each job card on the fir
   <figcaption>Sample Job Card</figcaption>
 </figure>
 
-After looking at all 15 jobs on the first page, I would also like my web-scraper to be able to click to the next page if applicable, and continue gathering information from multiple pages. To do this, I need a pagination variable and to find the next button. Pagination refers to the navigation bar at the bottom on websites that have multiple pages you can move between.
+After looking at all 15 jobs on the first page, I would also like my web-scraper to be able to click to the next page if applicable, and continue gathering information from multiple pages. To do this, I need both a pagination variable and to find the next button. Pagination refers to the navigation bar at the bottom on websites that have multiple pages you can move between.
 
 ![Figure]({{site.url}}/{{site.baseurl}}/assets/img/navigation.png)
 
-There should also be HTML code within the specific pagination tag that represents the next button you can click. We want to locate that, save it as a `next` button variable, and use `next.click()` to go to the next page. 
+There should also be HTML code within the pagination HTML tag that represents the next button you can click. We want to locate that, save it as a `next` button variable, and use `next.click()` to click to the next page. 
 
 {%- highlight python -%}
 pagination = driver.find_element(By.XPATH, ".//nav[contains(@role, 'navigation')]")
@@ -82,7 +82,7 @@ except:
 
 At this point, we should have the general navigational tools, and job card information necessary to carry out our data extraction. 
 
-3. What information would you like to gather?
+#### Step 3. What information would you like to gather?
 
 For this particular dataset, I was most interested in finding what I could on the following categories:
 
@@ -128,18 +128,23 @@ for job in all_jobs:
     posted.append(when_posted)
 {%- endhighlight -%}
 
-When scraping data from a website, a lot of the time the data will require some serious cleaning! For example, I really wanted my salary data to be floats, but that would be difficult had I left them as strings with `$` and/or `,` contained in it. It can also be noted that in my initial scrape, I was not able to get any information for my `Modality` column. This is because the different modalities were part of the location strings. This means I also had to separate the locations and determine whether or not it had the keywords that could help sort into my three modality categories: `Hybrid`, `Remote`, and `On-Site`. 
+When scraping data from a website, the data can often require some serious cleaning! For example, I really wanted my salary data to be floats, but that would be difficult had I left them as strings with `$` and/or `,` contained in it. It can also be noted that in my initial scrape, I was not able to get any information for my `Modality` column. This is because the different modalities were part of the location strings. This means I also had to separate the locations and determine whether or not it had the keywords that could help sort into my three modality categories: `Hybrid`, `Remote`, and `On-Site`. 
 
 After making the necessary improvements to my data, I was able to create the final cleaned dataframe below.
 <figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/final_df.png" alt="Description of image" style="width:1100px;height:500px;">
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/final_df.png" alt="Description of image" style="width:1100px;height:400px;">
 </figure>
 
 # Conclusion
 
 ***
 
+Interested in seeing some EDA conducted on this data? 
 
+Now that I have gone through the steps of gathering useful job information from Indeed, in my next post, I can share my findings from conducting some exploratory data analysis. I hope to answer questions such as:
 
+* What jobs have the highest pay?
+* Los Angeles is a big county, which cities have the highest pay?
+* How likely am I to work remote versus in person?
 
-https://www.blog.datahut.co/post/scrape-indeed-using-selenium-and-beautifulsoup
+Stay tuned to see what the data has to say regarding these topics of interest! Please reach out regarding potential areas for improvement or additional research topics I might want to consider moving forward.
