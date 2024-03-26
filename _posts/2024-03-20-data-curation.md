@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Data Curation Blog Post
+title:  "A College Student's Quest to Find a Job in Los Angeles, CA"
 date: 2024-03-20
 description: 
 image: "/assets/img/LA_blog.jpg"
@@ -144,7 +144,7 @@ Interested in seeing some EDA conducted on this data?
 Now that I have gone through the steps of gathering useful job information from Indeed, in my next post, I can share my findings from conducting some exploratory data analysis. I hope to answer questions such as:
 
 * What jobs have the highest pay?
-* Los Angeles is a big county, which cities have the highest pay?
 * How likely am I to work remote versus in person?
+* Los Angeles is a big county, which cities have the highest pay?
 
-Stay tuned to see what the data has to say regarding these topics of interest! Please reach out regarding potential areas for improvement or additional research topics I might want to consider moving forward.
+Stay tuned to see what the data has to say regarding these topics of interest! Please reach out with potential areas for improvement or additional research topics I might want to consider moving forward.
