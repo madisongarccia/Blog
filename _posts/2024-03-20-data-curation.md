@@ -2,7 +2,7 @@
 layout: post
 title:  "A College Student's Quest to Find a Job in Los Angeles"
 date: 2024-03-20
-description: 
+description: Finding a job can be tough regardless of location... so why not use our skills as data scientists to make things a little easier? This blog post will describe how I was able to pull data from one of the most popular online job boards, and prepare it for future data exploration. This will all be done in hopes of gaining a better picture of what to expect in the LA job market. 
 image: "/assets/img/LA_blog.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
