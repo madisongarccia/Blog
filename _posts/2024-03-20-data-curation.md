@@ -132,7 +132,7 @@ When scraping data from a website, a lot of the time the data will require some 
 
 After making the necessary improvements to my data, I was able to create the final cleaned dataframe below.
 <figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/final_df.png" alt="Description of image" style="width:500px;height:500px;">
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/final_df.png" alt="Description of image" style="width:700px;height:500px;">
 </figure>
 
 # Conclusion
