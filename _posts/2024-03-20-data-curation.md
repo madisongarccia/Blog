@@ -72,8 +72,12 @@ There should also be HTML code within the specific pagination tag that represent
 {%- highlight python -%}
 pagination = driver.find_element(By.XPATH, ".//nav[contains(@role, 'navigation')]")
 ... Code To Collect Data on One Page ...
-next = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By XPATH, ".//a[contains(@aria-label, 'Next Page')]")))
-next.click()
+try:
+    next = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By XPATH, ".//a[contains(@aria-label, 'Next Page')]")))
+    next.click()
+except:
+    print(f'failed on page {page_num})
+    break
 {%- endhighlight -%}
 
 At this point, we should have the general navigational tools, and job card information necessary to carry out our data extraction. 
@@ -82,17 +86,41 @@ At this point, we should have the general navigational tools, and job card infor
 
 For this particular dataset, I was most interested in finding what I could on the following categories:
 
-* Job Title
-* Company Name
-* Location (City and State)
-* Salary Amount
-* Job Description
-* How long ago was this posted?
-* Company Rating
-* Location Type (On-Site, Hybrid, Remote)
+* `Title` - Job Title
+* `Company` - Company Name
+* `Location` - City and State
+* `Pay` - Salary Amount
+* `Job_Description` - Job Description
+* `When_Posted` - How long ago was this posted?
+* `Rating` - Company Rating
+* `Is_Hybrid_Remote` - Location Type (On-Site, Hybrid, Remote)
 
 Most of this information was readily available on the job postings, but in order to gather this data, I needed to locate where each item would be found in the HTML code. 
 
-
+{%- highlight python -%}
+for job in all_jobs:
+    title = job.find_element(By.XPATH, ".//h2[contains(@class, 'jobTitle')]").text
+    try:
+        location = job.find_element(By.XPATH, ".//div[contains(@class, 'company_location')]").text.split("\n")[1]
+    except:
+        location = job.find_element(By.XPATH, ".//div[contains(@class, 'company_location')]").text.split("\n")[0]
+    company = job.find_element(By.XPATH, ".//div[contains(@class, 'company_location')]").text.split("\n")[0]
+    when_posted= job.find_element(By.XPATH, ".//tr[contains(@class, 'underShelfFooter')]").text.split("\n")[-1].strip("More...")
+    description = job.find_element(By.XPATH, ".//tr[contains(@class, 'underShelfFooter')]").text.split("\n")[0]
+    try:
+        string = job.find_element(By.XPATH, ".//div[contains(@class, 'salary-snippet-container')]").text
+        listy = string.split()
+        for element in listy:
+            if "$" in element:
+                pay = element
+    except:
+        pay = "NaN"
+    job_titles.append(title)
+    job_pays.append(pay)
+    company_names.append(company)
+    descriptions.append(description)
+    company_locations.append(location)
+    posted.append(when_posted)
+{%- endhighlight -%}
 
 https://www.blog.datahut.co/post/scrape-indeed-using-selenium-and-beautifulsoup
