@@ -76,7 +76,9 @@ The EDA conducted in this section gives valuable information about the distribut
 
 To continue this analysis,  a nonparametric statistical method holding the assumption that the distributions have similar shapes can be used. Since the normality assumption is not relevant for this test, we are able to continue with our original data to derive meaningful results. The Mann-Whitney test compares the ranks of the MMSE scores between groups with and without a family history of Alzheimer's disease. The null hypothesis for this test is that there is no difference in the distribution of MMSE scores for both groups, and the alternative is that there is a significant difference. 
 
-ADD MAN WHIT
+Wilcoxon rank sum test with continuity correction
+
+data: MMSE by FamilyHistoryAlzheimers
 
 With a p value of 0.4949, we failed to reject the null hypothesis and concluded that there is not a significant difference between the distribution of MMSE scores in the two groups.
 
