@@ -4,7 +4,7 @@ title:  "Nonparametric T Test on Alzheimer's Disease Data"
 date: 2024-10-20
 description: The data used in this paper looks at numerous medical and lifestyle records
   for 2,149 unique patients with and without diagnosed Alzheimer's disease. This analysis will first determine the distribution of Mini-Mental State Exam data for patients with and without a family history of Alzheimer's. Afterwards, a Mann-Whitney test will show that there is no significant difference between the two groups. Finally, conclusions and future study recommendations will be made based on the results of this paper's study. 
-image: "/assets/img/brain.jpg"
+image: "/assets/img/brain.png"
 display_image: false  # change this to true to display the image below the banner 
 ---
 
@@ -20,7 +20,7 @@ This paper aims to investigate whether there is a significant difference in cogn
 
 The hypotheses for this paper will test if there is a significant difference in cognitive function score via the MMSE between our two groups. The null and alternative hypotheses will be as follows, with a chosen alpha level of 0.05.
 
-Null: $ H_0:\mu_{Family History} = \mu_{NoFamilyHistory} $
+Null: $H_0:\mu_{Family History} = \mu_{NoFamilyHistory}$
 
 Alternative: $ H_a: \mu_{Family History}\ne \mu_{NoFamilyHistory} $
 
@@ -48,7 +48,7 @@ The table below provides initial summary statistics that are helpful in gaining 
 Normal probability plots and histograms can show whether each group follows a normal distribution. Both visualizations showed that the data provided is not normally distributed, and seems to follow a uniform distribution. 
 
 <figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/qqplot.png" alt="Description of image" style="width:300px;height:350px;">
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/qqplots.png" alt="Description of image" style="width:300px;height:350px;">
   <figcaption>QQ Plots</figcaption>
 </figure>
 
