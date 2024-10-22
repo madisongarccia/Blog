@@ -10,6 +10,10 @@ display_image: false  # change this to true to display the image below the banne
 
 # Introduction
 
+$ checking_l $
+
+$$ \nabla_\boldsymbol{x} J(\boldsymbol{x}) $$ 
+
 Alzheimer's disease is a neuro-degenerative disorder that affects people around the world, causing memory loss and a severe decline in cognitive function. A widely used tool for assessing the cognitive function of Alzheimer's patients is the Mini-Mental State Exam (MMSE), which allows us insight into the severity of the participant's cognitive level.
 
 ### Scientific Question
@@ -60,13 +64,37 @@ ADD PLOTS
 
 The null hypothesis for a Shapiro-Wilk test is that the data is normally distributed. With a p value lower than 0.05, we rejected the null hypothesis and concluded that the MMSE scores for both patient groups were not normally distributed.
 
-ADD WILK TEST
+        ## Shapiro-Wilk normality test
+
+        ## data:  family_history$MMSE
+        ## W = 0.95105, p-value = 2.05e-12
+
+
+        ##    Shapiro-Wilk normality test
+
+        ## data:  no_family_history$MMSE
+        ## W = 0.95262, p-value < 2.2e-16
+
+
+        ##    Shapiro-Wilk normality test
+
+        ## data:  family_history$MMSE
+        ## W = 0.95105, p-value = 2.05e-12
 
 ### Check for Equal Variance
 
-An F test can be administered to check for equal variance between two groups.The ratios of the variances was close to 1 (\~1.0268) so it could be concluded that the variances were equal.
+An F test can be administered to check for equal variance between two groups.The ratios of the variances was close to 1 (~1.0268) so it could be concluded that the variances were equal.
 
-ADD PLOT
+        F test to compare two variances
+
+        data:  MMSE by status
+        F = 1.0268, num df = 541, denom df = 1606, p-value = 0.6977
+        alternative hypothesis: true ratio of variances is not equal to 1
+        95 percent confidence interval:
+        0.8966642 1.1814337
+        sample estimates:
+        ratio of variances 
+                1.02679 
 
 ### EDA Conclusions
 
@@ -76,9 +104,15 @@ The EDA conducted in this section gives valuable information about the distribut
 
 To continue this analysis,  a nonparametric statistical method holding the assumption that the distributions have similar shapes can be used. Since the normality assumption is not relevant for this test, we are able to continue with our original data to derive meaningful results. The Mann-Whitney test compares the ranks of the MMSE scores between groups with and without a family history of Alzheimer's disease. The null hypothesis for this test is that there is no difference in the distribution of MMSE scores for both groups, and the alternative is that there is a significant difference. 
 
-Wilcoxon rank sum test with continuity correction
+``` r
+wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.sided')
 
-data: MMSE by FamilyHistoryAlzheimers
+```
+
+          Wilcoxon rank sum test with continuity correction
+         data:  MMSE by FamilyHistoryAlzheimers
+         W = 426971, p-value = 0.4949
+         alternative hypothesis: true location shift is not equal to 04
 
 With a p value of 0.4949, we failed to reject the null hypothesis and concluded that there is not a significant difference between the distribution of MMSE scores in the two groups.
 
