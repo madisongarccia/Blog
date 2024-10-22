@@ -4,7 +4,7 @@ title:  "Nonparametric T Test on Alzheimer's Disease Data"
 date: 2024-10-20
 description: The data used in this paper looks at numerous medical and lifestyle records
   for 2,149 unique patients with and without diagnosed Alzheimer's disease. This analysis will first determine the distribution of Mini-Mental State Exam data for patients with and without a family history of Alzheimer's. Afterwards, a Mann-Whitney test will show that there is no significant difference between the two groups. Finally, conclusions and future study recommendations will be made based on the results of this paper's study. 
-image: "/assets/img/brain.png"
+image: "/assets/img/435_report1/brain.png"
 display_image: false  # change this to true to display the image below the banner 
 ---
 
@@ -48,7 +48,7 @@ The table below provides initial summary statistics that are helpful in gaining 
 Normal probability plots and histograms can show whether each group follows a normal distribution. Both visualizations showed that the data provided is not normally distributed, and seems to follow a uniform distribution. 
 
 <figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/qqplots.png" alt="Description of image" style="width:300px;height:350px;">
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/qqplots.png" alt="Description of image" style="width:300px;height:350px;">
   <figcaption>QQ Plots</figcaption>
 </figure>
 
