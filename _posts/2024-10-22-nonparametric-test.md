@@ -50,13 +50,19 @@ ADD PLOTS
 
 <figure>
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/no_hist.png" alt="Description of image" style="width:300px;height:350px;">
-  <figcaption>Sample Job Card</figcaption>
+  <figcaption>Distribution of MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
 </figure>
 
 <figure>
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/yes_hist.png" alt="Description of image" style="width:300px;height:350px;">
-  <figcaption>Sample Job Card</figcaption>
+  <figcaption>Distribution of MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
 </figure>
+
+
+<div style="display: flex;">
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/yes_hist.png" alt="Image 1" style="width: 45%; margin-right: 10px;" />
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/no_hist.png" alt="Image 2" style="width: 45%;" />
+</div>
 
 
 The null hypothesis for a Shapiro-Wilk test is that the data is normally distributed. With a p value lower than 0.05, we rejected the null hypothesis and concluded that the MMSE scores for both patient groups were not normally distributed.
