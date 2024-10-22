@@ -4,15 +4,11 @@ title:  "Nonparametric T Test on Alzheimer's Disease Data"
 date: 2024-10-20
 description: The data used in this paper looks at numerous medical and lifestyle records
   for 2,149 unique patients with and without diagnosed Alzheimer's disease. This analysis will first determine the distribution of Mini-Mental State Exam data for patients with and without a family history of Alzheimer's. Afterwards, a Mann-Whitney test will show that there is no significant difference between the two groups. Finally, conclusions and future study recommendations will be made based on the results of this paper's study. 
-image: "/assets/img/LA_blog.jpg"
+image: "/assets/img/brain.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
 
 # Introduction
-
-$ checking_l $
-
-$$ \nabla_\boldsymbol{x} J(\boldsymbol{x}) $$ 
 
 Alzheimer's disease is a neuro-degenerative disorder that affects people around the world, causing memory loss and a severe decline in cognitive function. A widely used tool for assessing the cognitive function of Alzheimer's patients is the Mini-Mental State Exam (MMSE), which allows us insight into the severity of the participant's cognitive level.
 
@@ -24,9 +20,9 @@ This paper aims to investigate whether there is a significant difference in cogn
 
 The hypotheses for this paper will test if there is a significant difference in cognitive function score via the MMSE between our two groups. The null and alternative hypotheses will be as follows, with a chosen alpha level of 0.05.
 
-Null: $H_0:\mu_{Family History} = \mu_{NoFamilyHistory}$
+Null: $ H_0:\mu_{Family History} = \mu_{NoFamilyHistory} $
 
-Alternative: $H_a: \mu_{Family History}\ne \mu_{NoFamilyHistory}$
+Alternative: $ H_a: \mu_{Family History}\ne \mu_{NoFamilyHistory} $
 
 
 ### Procedure Used/Methodology
@@ -51,35 +47,31 @@ The table below provides initial summary statistics that are helpful in gaining 
 
 Normal probability plots and histograms can show whether each group follows a normal distribution. Both visualizations showed that the data provided is not normally distributed, and seems to follow a uniform distribution. 
 
-ADD PLOTS
-
+<figure>
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/qqplot.png" alt="Description of image" style="width:300px;height:350px;">
+  <figcaption>QQ Plots</figcaption>
+</figure>
 
 <div style="display: flex;">
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/yes_hist.png" alt="Image 1" style="width: 45%; margin-right: 10px;" />
-    <figcaption>Distribution of MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
+
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/no_hist.png" alt="Image 2" style="width: 45%;" />
-  <figcaption>Distribution of MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
+ 
 </div>
 
 
 The null hypothesis for a Shapiro-Wilk test is that the data is normally distributed. With a p value lower than 0.05, we rejected the null hypothesis and concluded that the MMSE scores for both patient groups were not normally distributed.
 
-        ## Shapiro-Wilk normality test
+            Shapiro-Wilk normality test
 
-        ## data:  family_history$MMSE
-        ## W = 0.95105, p-value = 2.05e-12
-
-
-        ##    Shapiro-Wilk normality test
-
-        ## data:  no_family_history$MMSE
-        ## W = 0.95262, p-value < 2.2e-16
+         data:  no_family_history$MMSE
+         W = 0.95262, p-value < 2.2e-16
 
 
-        ##    Shapiro-Wilk normality test
+            Shapiro-Wilk normality test
 
-        ## data:  family_history$MMSE
-        ## W = 0.95105, p-value = 2.05e-12
+         data:  family_history$MMSE
+         W = 0.95105, p-value = 2.05e-12
 
 ### Check for Equal Variance
 
@@ -93,7 +85,7 @@ An F test can be administered to check for equal variance between two groups.The
         95 percent confidence interval:
         0.8966642 1.1814337
         sample estimates:
-        ratio of variances 
+        ratio of variances: 
                 1.02679 
 
 ### EDA Conclusions
@@ -106,7 +98,6 @@ To continue this analysis,  a nonparametric statistical method holding the assum
 
 ``` r
 wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.sided')
-
 ```
 
           Wilcoxon rank sum test with continuity correction
