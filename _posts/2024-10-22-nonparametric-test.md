@@ -3,7 +3,7 @@ layout: post
 title:  "Nonparametric T Test on Alzheimer's Disease Data"
 date: 2024-10-20
 description: The data used in this paper looks at numerous medical and lifestyle records
-  for 2,149 unique patients with and without diagnosed Alzheimer's disease. This analysis will first determine the distribution of Mini-Mental State Exam data for patients with and without a family history of Alzheimer\'s. Afterwards, a Mann-Whitney test will show that there is no significant difference between the two groups. Finally, conclusions and future study recommendations will be made based on the results of this paper\'s study. 
+  for 2,149 unique patients with and without diagnosed Alzheimer's disease. This analysis will first determine the distribution of Mini-Mental State Exam data for patients with and without a family history of Alzheimer's. Afterwards, a Mann-Whitney test will show that there is no significant difference between the two groups. Finally, conclusions and future study recommendations will be made based on the results of this paper's study. 
 image: "/assets/img/LA_blog.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
@@ -24,12 +24,6 @@ Null: $H_0:\mu_{Family History} = \mu_{NoFamilyHistory}$
 
 Alternative: $H_a: \mu_{Family History}\ne \mu_{NoFamilyHistory}$
 
-$$
-\begin{aligned}
-H_0:\mu_{Family History} = \mu_{NoFamilyHistory}
-H_a: \mu_{Family History}\ne \mu_{NoFamilyHistory}
-\end{aligned}
-$$
 
 ### Procedure Used/Methodology
 
