@@ -20,9 +20,16 @@ This paper aims to investigate whether there is a significant difference in cogn
 
 The hypotheses for this paper will test if there is a significant difference in cognitive function score via the MMSE between our two groups. The null and alternative hypotheses will be as follows, with a chosen alpha level of 0.05.
 
-Null: $H_0: \mu_{Family History} = \mu_{NoFamilyHistory}$
+Null: $H_0:\mu_{Family History} = \mu_{NoFamilyHistory}$
 
 Alternative: $H_a: \mu_{Family History}\ne \mu_{NoFamilyHistory}$
+
+$$
+\begin{aligned}
+H_0:\mu_{Family History} = \mu_{NoFamilyHistory}
+H_a: \mu_{Family History}\ne \mu_{NoFamilyHistory}
+\end{aligned}
+$$
 
 ### Procedure Used/Methodology
 
@@ -48,20 +55,12 @@ Normal probability plots and histograms can show whether each group follows a no
 
 ADD PLOTS
 
-<figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/no_hist.png" alt="Description of image" style="width:300px;height:350px;">
-  <figcaption>Distribution of MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
-</figure>
-
-<figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/yes_hist.png" alt="Description of image" style="width:300px;height:350px;">
-  <figcaption>Distribution of MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
-</figure>
-
 
 <div style="display: flex;">
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/yes_hist.png" alt="Image 1" style="width: 45%; margin-right: 10px;" />
+    <figcaption>Distribution of MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/no_hist.png" alt="Image 2" style="width: 45%;" />
+  <figcaption>Distribution of MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
 </div>
 
 
