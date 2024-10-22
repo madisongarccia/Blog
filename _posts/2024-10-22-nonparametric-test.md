@@ -36,10 +36,11 @@ The MMSE data separated by family history, was pulled from kaggle.com Rabie El K
 
 The table below provides initial summary statistics that are helpful in gaining a stronger understanding of the MMSE scores for both groups. Note the values provided have been rounded to two decimal places. 
 
-<figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/summary_stats.png" alt="Description of image" style="width:300px;height:350px;">
-  <figcaption>Summary statistics for MMSE scores grouped by family history of Alzheimer's</figcaption>
-</figure>
+| Family History Alzheimers | Mean | Median | Standard Deviation | Minimum | Maximum | First Quartile | Third Quartile | n |
+| ----------- | ----------- | -----|--------|--------------------|---------|---------|----------------|----------------|---|
+| No    |  14.68   | 14.20 | 8.59 | 0.01 | 29.99 | 7.13 | 22.09 | 1607 |
+| Yes   |  14.99  | 15.29 | 8.70 | 0.05 | 29.97 | 7.26 | 22.60 | 542 | 
+
 
 ### Check for Normality
 
