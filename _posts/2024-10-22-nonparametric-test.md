@@ -10,7 +10,9 @@ display_image: false  # change this to true to display the image below the banne
 
 # Introduction
 
-Alzheimer's disease is a neuro-degenerative disorder that affects people around the world, causing memory loss and a severe decline in cognitive function. A widely used tool for assessing the cognitive function of Alzheimer's patients is the Mini-Mental State Exam (MMSE), which allows us insight into the severity of the participant's cognitive level.
+Alzheimer's disease is a neurodegenerative disorder that affects people around the world, leading to memory loss and a severe decline in cognitive function. It is the most common cause of dementia as it accounts for 60-80% of cases. 
+
+A widely used tool for assessing the cognitive function of Alzheimer's patients is the Mini-Mental State Exam (MMSE). This 30-point questionnaire evaluates a patient's cognitive functions such as orientation, attention, and memory. Lower scores on this exam indicate more severe impairment, but this alone will not entirely explain whether or not a person has Alzheimer's disease. Typically, it is used in combination with other clinical assessments and analyses to make a comprehensive diagnosis over time. However, examining MMSE scores can help medical professionals track and create healthcare plans accordingly. 
 
 ### Scientific Question
 
@@ -18,7 +20,7 @@ This paper aims to investigate whether there is a significant difference in cogn
 
 ### Statistical Hypotheses
 
-The hypotheses for this paper will test if there is a significant difference in cognitive function score via the MMSE between our two groups. The null and alternative hypotheses will be as follows, with a chosen alpha level of 0.05.
+The hypotheses for this paper test if there is a significant difference in cognitive function score via the MMSE between our two groups. The null and alternative hypotheses are as follows, with a chosen alpha level of 0.05.
 
 Null: $H_0:\mu_{Family History} = \mu_{NoFamilyHistory}$
 
@@ -27,7 +29,7 @@ Alternative: $ H_a: \mu_{Family History}\ne \mu_{NoFamilyHistory} $
 
 ### Procedure Used/Methodology
 
-This procedure will start by grouping participants by their status: having or not having a family history of Alzheimer's disease. Some preliminary exploratory data analysis can be conducted to determine relevant statistics for summarizing the MMSE data. 
+This procedure starts by grouping participants by their status: having or not having a family history of Alzheimer's disease. Some preliminary exploratory data analysis can be conducted to determine relevant statistics for summarizing the MMSE data. 
 
 # Data Description
 
@@ -35,7 +37,7 @@ The MMSE data separated by family history, was pulled from kaggle.com Rabie El K
 
 ### Summary Statistics for Two Samples
 
-The table below provides initial summary statistics that are helpful in gaining a stronger understanding of the MMSE scores for both groups. Note the values provided have been rounded to two decimal places. 
+The table below provides initial summary statistics that are helpful in gaining a stronger understanding of the MMSE scores for both groups. Note the values provided have been rounded to two decimal places for interpretability purposes. 
 
 | Family History Alzheimers | Mean | Median | Standard Deviation | Minimum | Maximum | First Quartile | Third Quartile | n |
 | ----------- | ----------- | -----|--------|--------------------|---------|---------|----------------|----------------|---|
@@ -90,11 +92,11 @@ An F test can be administered to check for equal variance between two groups.The
 
 ### EDA Conclusions
 
-The EDA conducted in this section gives valuable information about the distributions of our two samples that allows me to determine next steps for obtaining meaningful results. I learned that our MMSE data within both groups is not normally distributed. This means that I am not able to use parametric statistical methods to derive results, because one of the assumptions the test requires is for the data distribution to be approximately normal. therefore, I will need to use a different type of statistical method that does not require this assumption to be met. 
+The EDA conducted in this section give valuable information about the distributions of our two samples, allowing for next steps to be taken in order to obtain meaningful results. We learned that our MMSE data within both groups is not normally distributed. This means that we are unable to use parametric statistical methods to derive results, because one of the assumptions the test requires is for the data distribution to be approximately normal. Therefore, a different type of statistical method that does not include a normality assumption is required 
 
 # Mann-Whitney Test
 
-To continue this analysis,  a nonparametric statistical method holding the assumption that the distributions have similar shapes can be used. Since the normality assumption is not relevant for this test, we are able to continue with our original data to derive meaningful results. The Mann-Whitney test compares the ranks of the MMSE scores between groups with and without a family history of Alzheimer's disease. The null hypothesis for this test is that there is no difference in the distribution of MMSE scores for both groups, and the alternative is that there is a significant difference. 
+To continue this analysis,  a nonparametric statistical method holding the assumption that the distributions have similar shapes was used. Since the normality assumption is not relevant for this test, we were able to continue with the original data to derive meaningful results. The Mann-Whitney test compared the ranks of the MMSE scores between groups with and without a family history of Alzheimer's disease. The null hypothesis for this test was that there is no difference in the distribution of MMSE scores for both groups, and the alternative was that there is a significant difference. 
 
 ``` r
 wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.sided')
@@ -109,10 +111,10 @@ With a p value of 0.4949, we failed to reject the null hypothesis and concluded 
 
 # Conclusions & Recommendations
 
-After taking a closer look during the EDA portion of this report, I noticed my data was not normally distributed. I came to this conclusion after separating my data and examining Q-Q Plots, Shapiro-Wilk normality tests and distribution histograms - all of which failed to show a normal distribution. With this information, I decided to use the Mann-Whitney test which led me to fail to reject the hypothesis that there is no significant difference between patients with and without family history of Alzheimer's MMSE scores. 
+After taking a closer look during the EDA portion of this report, the data did not appear to be normally distributed. By separating the data and examining Q-Q Plots, Shapiro-Wilk normality tests and distribution histograms, all failed to show a normal distribution. With this information, using the Mann-Whitney test made the most sense, and led to failing to reject the hypothesis that there was no significant difference between patients with and without family history of Alzheimer's MMSE scores. 
 
-In this analysis, pursuing a nonparametric method was the best option because of the nature of my data. However, in times where data is already normally distributed or can be easily transformed, it could be wiser to use parametric processes to make conclusions as there may be higher power. Despite this trade-off, I was still able to gain some valuable insight, and learn something new about my data.
+In this analysis, pursuing a nonparametric method was the best option because of the nature of the data. However, in times where data is already normally distributed or can be easily transformed, it may be wiser to use parametric processes to make conclusions as there may be higher power. Despite this trade-off, we were still able to gain some valuable insight, and learn something new about the data.
 
 # Recommendations for Future Studies
 
-Although I was unable to conclude significant differences between my two groups, there may still be derivable significant differences within this dataset. I would encourage future research looking into how `Diagnosis` might be able to be predicted from other features recorded in the dataset. I would also encourage further EDA or additional research to determine important features as there is so much to learn about Alzheimer's disease. 
+Although this analysis was unable to find significant differences between the two groups, there may still be derivable significant differences within this dataset. I would encourage future research looking into how `Diagnosis` might be able to be predicted from other features recorded in the dataset. Further EDA or additional research to determine important features is also encouraged, as there is still so much to learn about Alzheimer's disease. 
