@@ -20,7 +20,7 @@ Is there is a significant difference in cognitive function (measured by MMSE sco
 
 ### Statistical Hypotheses
 
-The hypotheses for this paper test if there is a significant difference in cognitive function score via the MMSE between our two groups. The null and alternative hypotheses are as follows, with a chosen alpha level of 0.05.
+The hypotheses for this blog test if there is a significant difference in cognitive function score via the MMSE between our two groups. The null and alternative hypotheses are as follows, with a chosen alpha level of 0.05.
 
 $H_0:\mu_{Family History} = \mu_{NoFamilyHistory}$
 
@@ -43,42 +43,48 @@ The table below provides initial summary statistics that are helpful in gaining 
 | ----------- | ----------- | -----|--------|--------------------|---------|---------|----------------|----------------|---|
 | No    |  14.68   | 14.20 | 8.59 | 0.01 | 29.99 | 7.13 | 22.09 | 1607 |
 | Yes   |  14.99  | 15.29 | 8.70 | 0.05 | 29.97 | 7.26 | 22.60 | 542 | 
-
+ <figcaption>Table 1: Summary Statistics</figcaption>
 
 ### Check for Normality
 
-Normal probability plots and histograms can show whether each group follows a normal distribution. Both visualizations showed that the data provided is not normally distributed, and seems to follow a uniform distribution. 
+1. Visualizing the Distributions
+
+Normal probability plots and histograms can show whether each group follows a normal distribution. Both visualizations helped to conclude that the data provided is not normally distributed, and rather seems to follow a uniform distribution. 
 
 <figure>
-  <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/qqplots.png" alt="Description of image" style="width:300px;height:350px;">
-  <figcaption>QQ Plots</figcaption>
+  <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/qqplots.png" alt="Description of image" style="width:600px;height:350px;">
+  <figcaption>Figure 1: Normal QQ Plots</figcaption>
 </figure>
 
+<figure>
 <div style="display: flex;">
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/yes_hist.png" alt="Image 1" style="width: 45%; margin-right: 10px;" />
 
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/no_hist.png" alt="Image 2" style="width: 45%;" />
- 
+ <figcaption>Figure 2: Sid-by-Side MMSE Score Histograms</figcaption>
 </div>
+</figure>
 
+2. Shapiro-Wilk Test
 
-The null hypothesis for a Shapiro-Wilk test is that the data is normally distributed. With a p value lower than 0.05, we rejected the null hypothesis and concluded that the MMSE scores for both patient groups were not normally distributed.
+The null hypothesis for a Shapiro-Wilk test assumes that the data is normally distributed. 
 
 | Shapiro-Wilk Normality Test |
 | ------------------------------|
 | W  Statistic | p-value  |
-| --------------------|
 | 0.95262 | < 2.2e-16 |
 
-MMSE Scores for Patients Without a Family History of Alzheimer's
+ <figcaption>Table 2: MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
 
 | Shapiro-Wilk Normality Test|
 | ------------------------------|
 | W  Statistic | p-value  |
-| --------------------|
 | 0.0.95105 | 2.05e-12 |
 
-MMSE Scores for Patients With a Family History of Alzheimer's 
+ <figcaption>Table 3: MMSE Scores for Patients With a Family History of Alzheimer's </figcaption>
+
+
+With a p value lower than 0.05, we rejected the null hypothesis and concluded that the MMSE scores for both patient groups were not normally distributed.
 
 ### Check for Equal Variance
 
@@ -86,29 +92,27 @@ An F test can be administered to check for equal variance between two groups.The
 
 | F test to compare two variances |
 | -------------------------------------------------|
-| F = 1.0268 | num df = 541 | denom df = 1606 | p-value = 0.6977 |
-
-alternative hypothesis: true ratio of variances is not equal to 1
-
-| 95 percent confidence interval | 
-| -------------------------- |
+| F: 1.0268 | num. df: 541 | denom. df: 1606 | p-value: 0.6977 |
+| alternative hypothesis: true ratio of variances is not equal to 1 |
+| 95 percent confidence interval: | 
  | lower: 0.8966642 | upper: 1.1814337 |
-        
 | sample estimates |
-| ---------------- |
 | ratio of variances: 1.02679  |
 
 ### EDA Conclusions
 
-The EDA conducted in this section give valuable information about the distributions of our two samples, allowing for next steps to be taken in order to obtain meaningful results. We learned that our MMSE data within both groups is not normally distributed. This means that we are unable to use parametric statistical methods to derive results, because one of the assumptions the test requires is for the data distribution to be approximately normal. Therefore, a different type of statistical method that does not include a normality assumption is required 
+The EDA conducted in this section give valuable information about the distributions of our two samples, allowing for next steps to be taken in order to obtain meaningful results. We learned that our MMSE data within both groups is not normally distributed. This means that we are unable to use parametric statistical methods to derive results. Therefore, a different type of statistical method that does not include a normality assumption is required. 
 
-# Mann-Whitney Test
+## Non-Parametric Tests for Significance
 
-To continue this analysis,  a nonparametric statistical method holding the assumption that the distributions have similar shapes was used. Since the normality assumption is not relevant for this test, we were able to continue with the original data to derive meaningful results. The Mann-Whitney test compared the ranks of the MMSE scores between groups with and without a family history of Alzheimer's disease. The null hypothesis for this test was that there is no difference in the distribution of MMSE scores for both groups, and the alternative was that there is a significant difference. 
+1. Mann-Whitney Test
+
+The Mann-Whitney test compared the ranks of the MMSE scores between groups with and without a family history of Alzheimer's disease. The null hypothesis for this test was that there is no difference in the distribution of MMSE scores for both groups, and the alternative was that there is a significant difference. 
 
 ``` r
 wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.sided')
 ```
+output:
 
           Wilcoxon rank sum test with continuity correction
          data:  MMSE by FamilyHistoryAlzheimers
@@ -117,19 +121,19 @@ wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.
 
 With a p value of 0.4949, we failed to reject the null hypothesis and concluded that there is not a significant difference between the distribution of MMSE scores in the two groups.
 
-# Permutations and Randomized Combinations
+2. Permutations and Randomized Combinations
 
-To continue my analysis on the Alzheimer's Disease data, permutations and combination methods help to assess the difference in Mini-Mental State Examination (MMSE) scores between participants with and without a family history of Alzheimer's. A key reason why these methods are included is that permutation tests are not bound to any assumptions on the distribution of the data, and as previously noted, the data used in this analysis is not normally distributed. The goal is to explore how unusual the observed statistic acquired from the Mann-Whitney test is by testing if it occurred via random chance.
+To continue the analysis on the Alzheimer's Disease data, permutations and combination methods help to assess the difference in Mini-Mental State Examination (MMSE) scores between participants with and without a family history of Alzheimer's. A key reason why these methods are included is that permutation tests are not bound to any assumptions on the distribution of the data, and as previously noted, the data used in this analysis is not normally distributed. The goal is to explore how unusual the observed statistic acquired from the Mann-Whitney test is by testing if it occurred via random chance.
 
-Given that the sample size of my data is relatively large (`r n` participants) using the traditional permutations and combinations formulas would be ineffective in R, because the values derived would be extremely high (R classifies them as `Inf`). Due to this constraint, we drew samples to approximate the distribution of differences that could be expected under the null hypothesis.
+Given that the sample size of my data is relatively large (2,149 participants) using the traditional permutations and combinations formulas would be ineffective in R, because the values derived would be extremely high (R classifies them as `Inf`). Due to this constraint, we drew samples to approximate the distribution of differences that could be expected under the null hypothesis.
 
 $H_0: \mu_{Family History} = \mu_{NoFamilyHistory}$
 
-There is no significant difference in MMSE scores between individuals with a family history of Alzheimer's and those without
+*"There is no significant difference in MMSE scores between individuals with a family history of Alzheimer's and those without."*
 
 $H_A: \mu_{Family History}\ne \mu_{NoFamilyHistory}$
 
-There is a significant difference in MMSE scores between individuals with a family history of Alzheimer's and those without
+*"There is a significant difference in MMSE scores between individuals with a family history of Alzheimer's and those without."*
 
 ### Explanation of Techniques
 
