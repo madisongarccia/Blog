@@ -2,8 +2,8 @@
 layout: post
 title:  "Nonparametric Tests on Alzheimer's Disease Data"
 date: 2024-10-20
-description: The data used in this paper looks at numerous medical and lifestyle records
-  for 2,149 unique patients with and without diagnosed Alzheimer's disease. This analysis will first determine the distribution of Mini-Mental State Exam data for patients with and without a family history of Alzheimer's. Afterwards, a Mann-Whitney test will show that there is no significant difference between the two groups. Finally, conclusions and future study recommendations will be made based on the results of this paper's study. 
+description: The data used in this post looks at numerous medical and lifestyle records
+  for 2,149 unique patients with and without diagnosed Alzheimer's disease. This analysis will first determine the distribution of Mini-Mental State Exam data for patients with and without a family history of Alzheimer's. Afterwards, a Mann-Whitney test will show that there is no significant difference between the two groups. Finally, conclusions and future study recommendations will be made based on the results of this post's study. 
 image: "/assets/img/435_report1/brain.png"
 display_image: false  # change this to true to display the image below the banner 
 ---
@@ -111,27 +111,25 @@ The EDA conducted in this section give valuable information about the distributi
 
 ## Non-Parametric Tests for Significance
 
-**1. Mann-Whitney Test**
+### **1. Mann-Whitney Test**
 
 The Mann-Whitney test compared the ranks of the MMSE scores between groups with and without a family history of Alzheimer's disease. The null hypothesis for this test was that there is no difference in the distribution of MMSE scores for both groups, and the alternative was that there is a significant difference. 
 
 R code:
 
-``` r
-wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.sided')
-```
 `wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.sided')`
 
 output:
 
-          Wilcoxon rank sum test with continuity correction
-         data:  MMSE by FamilyHistoryAlzheimers
-         W = 426971, p-value = 0.4949
-         alternative hypothesis: true location shift is not equal to 04
+  `Wilcoxon rank sum test with continuity correction`
+  `data:  MMSE by FamilyHistoryAlzheimers`
+  `W = 426971, p-value = 0.4949`
+  `alternative hypothesis: true location shift is not equal to 04`
+
 
 With a p value of 0.4949, we failed to reject the null hypothesis and concluded that there is not a significant difference between the distribution of MMSE scores in the two groups.
 
-2. Permutations and Randomized Combinations
+### **2. Permutations and Randomized Combinations**
 
 To continue the analysis on the Alzheimer's Disease data, permutations and combination methods help to assess the difference in Mini-Mental State Examination (MMSE) scores between participants with and without a family history of Alzheimer's. A key reason why these methods are included is that permutation tests are not bound to any assumptions on the distribution of the data, and as previously noted, the data used in this analysis is not normally distributed. The goal is to explore how unusual the observed statistic acquired from the Mann-Whitney test is by testing if it occurred via random chance.
 
@@ -161,7 +159,7 @@ As recorded in the table above, both the permutation and combination tests produ
 
 # Conclusions & Recommendations
 
-After taking a closer look during the EDA portion of this report, the data did not appear to be normally distributed. By separating the data and examining Q-Q Plots, Shapiro-Wilk normality tests and distribution histograms, all failed to show a normal distribution. With this information, using the Mann-Whitney test made the most sense, and led to failing to reject the hypothesis that there was no significant difference between patients with and without family history of Alzheimer's MMSE scores. 
+After taking a closer look during the EDA portion of this report, the data did not appear to be normally distributed. By separating the data and examining Q-Q Plots, Shapiro-Wilk normality tests and distribution histograms, all failed to show a normal distribution. With this information, using the Mann-Whitney test and permutations/combinations made the most sense to gain a stronger understanding of the underlying relationships in the data. These tests led to failing to reject the hypothesis that there was no significant difference between patients with and without family history of Alzheimer's MMSE scores. 
 
 In this analysis, pursuing a nonparametric method was the best option because of the nature of the data. However, in times where data is already normally distributed or can be easily transformed, it may be wiser to use parametric processes to make conclusions as there may be higher power. Despite this trade-off, we were still able to gain some valuable insight, and learn something new about the data.
 
