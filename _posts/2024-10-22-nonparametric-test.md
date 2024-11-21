@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Nonparametric T Test on Alzheimer's Disease Data"
+title:  "Nonparametric Tests on Alzheimer's Disease Data"
 date: 2024-10-20
 description: The data used in this paper looks at numerous medical and lifestyle records
   for 2,149 unique patients with and without diagnosed Alzheimer's disease. This analysis will first determine the distribution of Mini-Mental State Exam data for patients with and without a family history of Alzheimer's. Afterwards, a Mann-Whitney test will show that there is no significant difference between the two groups. Finally, conclusions and future study recommendations will be made based on the results of this paper's study. 
@@ -33,7 +33,7 @@ This procedure starts by grouping participants by their status: having or not ha
 
 # Data Description
 
-The MMSE data separated by family history, was pulled from kaggle.com Rabie El Kharoua (2024). The group of patients with a family history of Alzheimer's contains 542 unique observations, while the other contains 1607 observations. The variable MMSE has scores ranging from 0-30, with the lower scores indicating a higher level of cognitive impairment. 
+The MMSE data separated by family history, was pulled from [kaggle.com Rabie El Kharoua (2024)](https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset). The group of patients with a family history of Alzheimer's contains 542 unique observations, while the other contains 1607 observations. The variable MMSE has scores ranging from 0-30, with the lower scores indicating a higher level of cognitive impairment. 
 
 ### Summary Statistics for Two Samples
 
@@ -64,16 +64,17 @@ Normal probability plots and histograms can show whether each group follows a no
 
 The null hypothesis for a Shapiro-Wilk test is that the data is normally distributed. With a p value lower than 0.05, we rejected the null hypothesis and concluded that the MMSE scores for both patient groups were not normally distributed.
 
-            Shapiro-Wilk normality test
-
-         data:  no_family_history$MMSE
-         W = 0.95262, p-value < 2.2e-16
-
-
-            Shapiro-Wilk normality test
-
-         data:  family_history$MMSE
-         W = 0.95105, p-value = 2.05e-12
+| Shapiro-Wilk normality test |
+| -----------------------------|
+| data:  MMSE Scores for Patients Without a Family History of Alzheimer's |
+| ------------------------------|
+| W = 0.95262 | p-value < 2.2e-16 |
+| -----------------------------------| 
+| Shapiro-Wilk normality test |
+| --------------------------------- |
+| data:  MMSE Scores for Patients With a Family History of Alzheimer's |
+| ------------------------------|
+| W = 0.95105 | p-value = 2.05e-12 |
 
 ### Check for Equal Variance
 
@@ -108,6 +109,34 @@ wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.
          alternative hypothesis: true location shift is not equal to 04
 
 With a p value of 0.4949, we failed to reject the null hypothesis and concluded that there is not a significant difference between the distribution of MMSE scores in the two groups.
+
+# Permutations and Randomized Combinations
+
+To continue my analysis on the Alzheimer's Disease data, permutations and combination methods help to assess the difference in Mini-Mental State Examination (MMSE) scores between participants with and without a family history of Alzheimer's. A key reason why these methods are included is that permutation tests are not bound to any assumptions on the distribution of the data, and as previously noted, the data used in this analysis is not normally distributed. The goal is to explore how unusual the observed statistic acquired from the Mann-Whitney test is by testing if it occurred via random chance.
+
+Given that the sample size of my data is relatively large (`r n` participants) using the traditional permutations and combinations formulas would be ineffective in R, because the values derived would be extremely high (R classifies them as `Inf`). Due to this constraint, we drew samples to approximate the distribution of differences that could be expected under the null hypothesis.
+
+$H_0: \mu_{Family History} = \mu_{NoFamilyHistory}$
+
+There is no significant difference in MMSE scores between individuals with a family history of Alzheimer's and those without
+
+$H_A: \mu_{Family History}\ne \mu_{NoFamilyHistory}$
+
+There is a significant difference in MMSE scores between individuals with a family history of Alzheimer's and those without
+
+### Explanation of Techniques
+
+A permutation test calculates a test statistic multiple times after randomly rearranging the data points to either group. For this data, that means randomly assigning MMSE scores to either participants with a family history of Alzheimer's, or without a family history of Alzheimer's. This results in a distribution of possible outcomes that could have been observed if the groupings were due to chance. For this study, 1,000 permutations were simulated, calculating the difference in sample means each time to test if the difference was greater than the observed difference in our original dataset.
+
+In this context, combinations describe the reshuffling of data groupings in a similar manner to the permutations test, but we are sampling without replacement. This method does not enumerate all possible outcomes, but still provides insight into whether the observed differences in the original data are statistically significant.
+
+Both the permutation and randomized combinations approaches support that our data follows what we would expect. The permutations and combinations density plots below illustrate the distributions of W statistics generated from 1,000 permutations and combinations. The original Mann-Whitney W statistic represented by the blue dashed line lies within 95% of both distributions, suggesting there is not a deviation from the expected outcome if the two family history groups were similar. 
+
+# graphs
+
+### Concluding Results
+
+As recorded in the table above, both the permutation and combination tests produced p-values of `r results_perm$p_value` and `r results_comb$p_value`, which exceed the statistical significance threshold of 0.05. The confidence intervals for the W statistic include the null hypothesis value, further supporting the conclusion that the observed differences are likely due to random variation.
 
 # Conclusions & Recommendations
 
