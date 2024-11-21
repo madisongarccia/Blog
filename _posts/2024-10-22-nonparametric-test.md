@@ -8,7 +8,7 @@ image: "/assets/img/435_report1/brain.png"
 display_image: false  # change this to true to display the image below the banner 
 ---
 
-# Introduction
+## Motivation
 
 Alzheimer's disease is a neurodegenerative disorder that affects people around the world, leading to memory loss and a severe decline in cognitive function. It is the most common cause of dementia as it accounts for 60-80% of cases. 
 
@@ -16,18 +16,18 @@ A widely used tool for assessing the cognitive function of Alzheimer's patients 
 
 ### Scientific Question
 
-This paper aims to investigate whether there is a significant difference in cognitive function (measured by MMSE scores) between patients with and without a family history of Alzheimer's disease.
+Is there is a significant difference in cognitive function (measured by MMSE scores) between patients with and without a family history of Alzheimer's disease?
 
 ### Statistical Hypotheses
 
 The hypotheses for this paper test if there is a significant difference in cognitive function score via the MMSE between our two groups. The null and alternative hypotheses are as follows, with a chosen alpha level of 0.05.
 
-Null: $H_0:\mu_{Family History} = \mu_{NoFamilyHistory}$
+$H_0:\mu_{Family History} = \mu_{NoFamilyHistory}$
 
-Alternative: $ H_a: \mu_{Family History}\ne \mu_{NoFamilyHistory} $
+$ H_A: \mu_{Family History}\ne \mu_{NoFamilyHistory}$
 
 
-### Procedure Used/Methodology
+### Methodology
 
 This procedure starts by grouping participants by their status: having or not having a family history of Alzheimer's disease. Some preliminary exploratory data analysis can be conducted to determine relevant statistics for summarizing the MMSE data. 
 
