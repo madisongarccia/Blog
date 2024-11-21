@@ -12,9 +12,9 @@ display_image: false  # change this to true to display the image below the banne
 
 ***
 
-## Motivation
+### Motivation
 
-Alzheimer's disease is a neurodegenerative disorder that affects people around the world, leading to memory loss and a severe decline in cognitive function. It is the most common cause of dementia as it accounts for 60-80% of cases. 
+<p class="intro"><span class="dropcap">A</span>lzheimer's disease is a neurodegenerative disorder that affects people around the world, leading to memory loss and a severe decline in cognitive function. It is the most common cause of dementia as it accounts for 60-80% of cases. 
 
 A widely used tool for assessing the cognitive function of Alzheimer's patients is the Mini-Mental State Exam (MMSE). This 30-point questionnaire evaluates a patient's cognitive functions such as orientation, attention, and memory. Lower scores on this exam indicate more severe impairment, but this alone will not entirely explain whether or not a person has Alzheimer's disease. Typically, it is used in combination with other clinical assessments and analyses to make a comprehensive diagnosis over time. However, examining MMSE scores can help medical professionals track and create healthcare plans accordingly. 
 
@@ -56,7 +56,7 @@ The table below provides initial summary statistics that are helpful in gaining 
 
 ### Check for Normality
 
-1. Visualizing the Distributions
+#### 1. Visualizing the Distributions
 
 Normal probability plots and histograms can show whether each group follows a normal distribution. Both visualizations helped to conclude that the data provided is not normally distributed, and rather seems to follow a uniform distribution. 
 
@@ -74,7 +74,7 @@ Normal probability plots and histograms can show whether each group follows a no
 <figcaption>Figure 2: Sid-by-Side MMSE Score Histograms</figcaption>
 </figure>
 
-2. Shapiro-Wilk Test
+#### 2. Shapiro-Wilk Test
 
 The null hypothesis for a Shapiro-Wilk test assumes that the data is normally distributed. 
 
@@ -164,7 +164,7 @@ Both the permutation and randomized combinations approaches support that our dat
 
 As recorded in the table above, both the permutation and combination tests produced p-values of `r results_perm$p_value` and `r results_comb$p_value`, which exceed the statistical significance threshold of 0.05. The confidence intervals for the W statistic include the null hypothesis value, further supporting the conclusion that the observed differences are likely due to random variation.
 
-# Conclusions & Recommendations
+# Concluding Remarks
 
 ***
 
