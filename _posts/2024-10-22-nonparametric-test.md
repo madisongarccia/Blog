@@ -39,12 +39,12 @@ The MMSE data separated by family history, was pulled from [kaggle.com Rabie El 
 
 The table below provides initial summary statistics that are helpful in gaining a stronger understanding of the MMSE scores for both groups. Note the values provided have been rounded to two decimal places for interpretability purposes. 
 
-<figure>
 | Family History Alzheimers | Mean | Median | Standard Deviation | Minimum | Maximum | First Quartile | Third Quartile | n |
 | ----------- | ----------- | -----|--------|--------------------|---------|---------|----------------|----------------|---|
 | No    |  14.68   | 14.20 | 8.59 | 0.01 | 29.99 | 7.13 | 22.09 | 1607 |
 | Yes   |  14.99  | 15.29 | 8.70 | 0.05 | 29.97 | 7.26 | 22.60 | 542 | 
 
+<figure>
   <figcaption>Table 1: Summary Statistics</figcaption>
 </figure>
 
@@ -77,15 +77,18 @@ The null hypothesis for a Shapiro-Wilk test assumes that the data is normally di
 | W  Statistic | p-value  |
 | 0.95262 | < 2.2e-16 |
 
+<figure>
  <figcaption>Table 2: MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
+</figure>
 
 | Shapiro-Wilk Normality Test|
 | ------------------------------|
 | W  Statistic | p-value  |
 | 0.0.95105 | 2.05e-12 |
 
+<figure>
  <figcaption>Table 3: MMSE Scores for Patients With a Family History of Alzheimer's </figcaption>
-
+</figure>
 
 With a p value lower than 0.05, we rejected the null hypothesis and concluded that the MMSE scores for both patient groups were not normally distributed.
 
@@ -108,13 +111,17 @@ The EDA conducted in this section give valuable information about the distributi
 
 ## Non-Parametric Tests for Significance
 
-1. Mann-Whitney Test
+**1. Mann-Whitney Test**
 
 The Mann-Whitney test compared the ranks of the MMSE scores between groups with and without a family history of Alzheimer's disease. The null hypothesis for this test was that there is no difference in the distribution of MMSE scores for both groups, and the alternative was that there is a significant difference. 
+
+R code:
 
 ``` r
 wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.sided')
 ```
+`wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.sided')`
+
 output:
 
           Wilcoxon rank sum test with continuity correction
