@@ -14,7 +14,7 @@ display_image: false  # change this to true to display the image below the banne
 
 ### Motivation
 
-<p class="intro"><span class="dropcap">A</span>lzheimer's disease is a neurodegenerative disorder that affects people around the world, leading to memory loss and a severe decline in cognitive function. It is the most common cause of dementia as it accounts for 60-80% of cases. 
+<p class="intro"><span class="dropcap">A</span>lzheimer's disease is a neurodegenerative disorder that affects people around the world, leading to memory loss and a severe decline in cognitive function. It is the most common cause of dementia as it accounts for 60-80% of cases. </p>
 
 A widely used tool for assessing the cognitive function of Alzheimer's patients is the Mini-Mental State Exam (MMSE). This 30-point questionnaire evaluates a patient's cognitive functions such as orientation, attention, and memory. Lower scores on this exam indicate more severe impairment, but this alone will not entirely explain whether or not a person has Alzheimer's disease. Typically, it is used in combination with other clinical assessments and analyses to make a comprehensive diagnosis over time. However, examining MMSE scores can help medical professionals track and create healthcare plans accordingly. 
 
