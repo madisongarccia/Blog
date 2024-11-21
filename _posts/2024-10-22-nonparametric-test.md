@@ -64,26 +64,25 @@ Normal probability plots and histograms can show whether each group follows a no
 
 The null hypothesis for a Shapiro-Wilk test is that the data is normally distributed. With a p value lower than 0.05, we rejected the null hypothesis and concluded that the MMSE scores for both patient groups were not normally distributed.
 
-| Shapiro-Wilk normality test |
-| -----------------------------|
-| data:  MMSE Scores for Patients Without a Family History of Alzheimer's |
+| Shapiro-Wilk normality test: MMSE Scores for Patients Without a Family History of Alzheimer's |
 | ------------------------------|
-| W = 0.95262 | p-value < 2.2e-16 |
-| -----------------------------------| 
-| Shapiro-Wilk normality test |
-| --------------------------------- |
-| data:  MMSE Scores for Patients With a Family History of Alzheimer's |
+| W  Statistic | p-value  |
+| --------------------|
+| 0.95262 | < 2.2e-16 |
+
+| Shapiro-Wilk normality test: MMSE Scores for Patients With a Family History of Alzheimer's |
 | ------------------------------|
-| W = 0.95105 | p-value = 2.05e-12 |
+| W  Statistic | p-value  |
+| --------------------|
+| 0.0.95105 | 2.05e-12 |
 
 ### Check for Equal Variance
 
 An F test can be administered to check for equal variance between two groups.The ratios of the variances was close to 1 (~1.0268) so it could be concluded that the variances were equal.
 
-        F test to compare two variances
-
-        data:  MMSE by status
-        F = 1.0268, num df = 541, denom df = 1606, p-value = 0.6977
+| F test to compare two variances: MMSE by status |
+| -------------------------------------------------|
+| F = 1.0268, num df = 541, denom df = 1606, p-value = 0.6977
         alternative hypothesis: true ratio of variances is not equal to 1
         95 percent confidence interval:
         0.8966642 1.1814337
