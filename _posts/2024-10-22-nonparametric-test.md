@@ -1,12 +1,16 @@
 ---
 layout: post
-title:  "Nonparametric Tests on Alzheimer's Disease Data"
+title:  "Understanding Alzheimer's Diagnosis Predictors"
 date: 2024-10-20
 description: The data used in this post looks at numerous medical and lifestyle records
   for 2,149 unique patients with and without diagnosed Alzheimer's disease. This analysis will first determine the distribution of Mini-Mental State Exam data for patients with and without a family history of Alzheimer's. Afterwards, a Mann-Whitney test will show that there is no significant difference between the two groups. Finally, conclusions and future study recommendations will be made based on the results of this post's study. 
 image: "/assets/img/435_report1/brain.png"
 display_image: false  # change this to true to display the image below the banner 
 ---
+
+# Setting the State
+
+***
 
 ## Motivation
 
@@ -31,7 +35,9 @@ $ H_A: \mu_{Family History}\ne \mu_{NoFamilyHistory}$
 
 This procedure starts by grouping participants by their status: having or not having a family history of Alzheimer's disease. Some preliminary exploratory data analysis can be conducted to determine relevant statistics for summarizing the MMSE data. 
 
-# Data Description
+# Getting to Know the Data
+
+***
 
 The MMSE data separated by family history, was pulled from [kaggle.com Rabie El Kharoua (2024)](https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset). The group of patients with a family history of Alzheimer's contains 542 unique observations, while the other contains 1607 observations. The variable MMSE has scores ranging from 0-30, with the lower scores indicating a higher level of cognitive impairment. 
 
@@ -96,20 +102,21 @@ With a p value lower than 0.05, we rejected the null hypothesis and concluded th
 
 An F test can be administered to check for equal variance between two groups.The ratios of the variances was close to 1 (~1.0268) so it could be concluded that the variances were equal.
 
-| F test to compare two variances |
-| -------------------------------------------------|
-| F: 1.0268 | num. df: 541 | denom. df: 1606 | p-value: 0.6977 |
-| alternative hypothesis: true ratio of variances is not equal to 1 |
-| 95 percent confidence interval: | 
- | lower: 0.8966642 | upper: 1.1814337 |
-| sample estimates |
-| ratio of variances: 1.02679  |
+`F test to compare two variances`
+`F = 1.0268   num. df = 541   denom. df = 1606   p-value = 0.6977`
+`alternative hypothesis: true ratio of variances is not equal to 1`
+`95 percent confidence interval: `
+`(0.8966642, 1.1814337) `
+`sample estimates `
+`ratio of variances = 1.02679  `
 
 ### EDA Conclusions
 
 The EDA conducted in this section give valuable information about the distributions of our two samples, allowing for next steps to be taken in order to obtain meaningful results. We learned that our MMSE data within both groups is not normally distributed. This means that we are unable to use parametric statistical methods to derive results. Therefore, a different type of statistical method that does not include a normality assumption is required. 
 
-## Non-Parametric Tests for Significance
+# Non-Parametric Tests for Significance
+
+***
 
 ### **1. Mann-Whitney Test**
 
@@ -153,16 +160,20 @@ Both the permutation and randomized combinations approaches support that our dat
 
 # graphs
 
-### Concluding Results
+### Results
 
 As recorded in the table above, both the permutation and combination tests produced p-values of `r results_perm$p_value` and `r results_comb$p_value`, which exceed the statistical significance threshold of 0.05. The confidence intervals for the W statistic include the null hypothesis value, further supporting the conclusion that the observed differences are likely due to random variation.
 
 # Conclusions & Recommendations
+
+***
 
 After taking a closer look during the EDA portion of this report, the data did not appear to be normally distributed. By separating the data and examining Q-Q Plots, Shapiro-Wilk normality tests and distribution histograms, all failed to show a normal distribution. With this information, using the Mann-Whitney test and permutations/combinations made the most sense to gain a stronger understanding of the underlying relationships in the data. These tests led to failing to reject the hypothesis that there was no significant difference between patients with and without family history of Alzheimer's MMSE scores. 
 
 In this analysis, pursuing a nonparametric method was the best option because of the nature of the data. However, in times where data is already normally distributed or can be easily transformed, it may be wiser to use parametric processes to make conclusions as there may be higher power. Despite this trade-off, we were still able to gain some valuable insight, and learn something new about the data.
 
 # Recommendations for Future Studies
+
+***
 
 Although this analysis was unable to find significant differences between the two groups, there may still be derivable significant differences within this dataset. I would encourage future research looking into how `Diagnosis` might be able to be predicted from other features recorded in the dataset. Further EDA or additional research to determine important features is also encouraged, as there is still so much to learn about Alzheimer's disease. 
