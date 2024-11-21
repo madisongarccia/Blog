@@ -39,11 +39,14 @@ The MMSE data separated by family history, was pulled from [kaggle.com Rabie El 
 
 The table below provides initial summary statistics that are helpful in gaining a stronger understanding of the MMSE scores for both groups. Note the values provided have been rounded to two decimal places for interpretability purposes. 
 
+<figure>
 | Family History Alzheimers | Mean | Median | Standard Deviation | Minimum | Maximum | First Quartile | Third Quartile | n |
 | ----------- | ----------- | -----|--------|--------------------|---------|---------|----------------|----------------|---|
 | No    |  14.68   | 14.20 | 8.59 | 0.01 | 29.99 | 7.13 | 22.09 | 1607 |
 | Yes   |  14.99  | 15.29 | 8.70 | 0.05 | 29.97 | 7.26 | 22.60 | 542 | 
- <figcaption>Table 1: Summary Statistics</figcaption>
+
+  <figcaption>Table 1: Summary Statistics</figcaption>
+</figure>
 
 ### Check for Normality
 
@@ -61,8 +64,8 @@ Normal probability plots and histograms can show whether each group follows a no
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/yes_hist.png" alt="Image 1" style="width: 45%; margin-right: 10px;" />
 
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/no_hist.png" alt="Image 2" style="width: 45%;" />
- <figcaption>Figure 2: Sid-by-Side MMSE Score Histograms</figcaption>
 </div>
+<figcaption>Figure 2: Sid-by-Side MMSE Score Histograms</figcaption>
 </figure>
 
 2. Shapiro-Wilk Test
