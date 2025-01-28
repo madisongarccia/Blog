@@ -69,13 +69,11 @@ Data transformation is where the magic happens. Here’s how we made the raw dat
 Several supervised learning models were tested on this data to test the relationships between features and the target variable. Each model was assessed based on the performance metric root mean squared error (rMSE), computational time, and challenges that occurred with the process. The table below includes the summary on these models and metrics. 
 
 
-| Model Name  | Description | Hyperparameters | rMSE | Time | Challenges |
-|-----------|---------------------|---------|-------------------|----------------|---------|
-| K Nearest Neighbors Regressor |  Predicting target by finding the average of the *k* number of neighbors surrounding a data point. | `n_neighbors`: 5  `weights`: 'distance' | 0.0321   | 12m  | Computationally expensive |
-| Ridge Regression | A linear regression model that uses Ridge regularization - a penalty term added to the cost function that pushes all coefficients towards zero. | `alpha`: 10 |  0.2015 | 26.1s   | Poor rMSE score compared to other models | 
-| Decision Trees | Starting from the root node, branches move down with nodes split based on different patterns in the most important features until we reach the terminal node (leaves). | `max_depth`: 7 `min_samples_leaf`: 1 `min_samples_split`: 10 | 0.0158 |   2m32s   | Prone to overfitting | 
-| XGBoost | Combines weak learning trees into strong learners by combining residuals and pruning. |    `learning_rate`: 0.2 `max_depth`: 3 `n_estimators`: 100 `subsample`: 0.8 |   0.0413     |  26.9s    | Best available model   | 
-| Deep Neural Network | Using Tensorflow, a DNN is an artificial neural network that includes multiple layers that can look for different patterns in the data.       |  `epochs`: 20 `batch_size`: 32 `validation_split`: 0.2   |  0.0628     | 1m57s    | Not a very strong model for this data | 
+| Model Name  | Performance (rMSE) | Key Insights  |
+|-----------|---------------------|---------|
+| XGBoost | ⭐ Best ⭐ | Balances accuracy and speed, with built-in overfitting prevention. |
+| Decision Trees | Good but overfits | Simpler but less robust. |
+| Deep Neural Networks	| Decent | Promising, but not worth the extra computational cost. |
 
 *Table 5: Supervised Learning Models*
 
