@@ -8,15 +8,15 @@ image: "/assets/img/435_report1/brain.png"
 display_image: false  # change this to true to display the image below the banner 
 ---
 
-# Setting the State
+# Setting the Stage
 
 ***
 
 ### Motivation
 
-<p class="intro"><span class="dropcap">A</span>lzheimer's disease is a neurodegenerative disorder that affects people around the world, leading to memory loss and a severe decline in cognitive function. It is the most common cause of dementia as it accounts for 60-80% of cases. </p>
+<p class="intro"><span class="dropcap">A</span>lzheimer's disease is a global challenge. This neurodegenerative disorder, responsible for 60-80% of dementia cases, profoundly affects memory and cognitive function. While researchers and medical professionals work tirelessly to unravel its mysteries, tools like the Mini-Mental State Exam (MMSE) help track cognitive decline.
 
-A widely used tool for assessing the cognitive function of Alzheimer's patients is the Mini-Mental State Exam (MMSE). This 30-point questionnaire evaluates a patient's cognitive functions such as orientation, attention, and memory. Lower scores on this exam indicate more severe impairment, but this alone will not entirely explain whether or not a person has Alzheimer's disease. Typically, it is used in combination with other clinical assessments and analyses to make a comprehensive diagnosis over time. However, examining MMSE scores can help medical professionals track and create healthcare plans accordingly. 
+The MMSE is a 30-point questionnaire that measures cognitive skills like memory, orientation, and attention. A low score means severe impairment, but MMSE scores alone aren’t enough for a full diagnosis. Still, they’re invaluable for monitoring progress and tailoring care plans.
 
 ### Scientific Question
 
@@ -24,26 +24,25 @@ Is there is a significant difference in cognitive function (measured by MMSE sco
 
 ### Statistical Hypotheses
 
-The hypotheses for this blog test if there is a significant difference in cognitive function score via the MMSE between our two groups. The null and alternative hypotheses are as follows, with a chosen alpha level of 0.05.
+We’re testing whether family history impacts MMSE scores. Here’s how we set up the hypotheses:
 
-$H_0:\mu_{Family History} = \mu_{NoFamilyHistory}$
+- Null Hypothesis ($H_0$): There’s no difference in MMSE scores between the two groups.
 
-$ H_A: \mu_{Family History}\ne \mu_{NoFamilyHistory}$
+- Alternative Hypothesis ($H_A$): There’s a significant difference in MMSE scores between the two groups.
 
-
-### Methodology
-
-This procedure starts by grouping participants by their status: having or not having a family history of Alzheimer's disease. Some preliminary exploratory data analysis can be conducted to determine relevant statistics for summarizing the MMSE data. 
+With an alpha level of 0.05, let’s dive into the data to see what it reveals.
 
 # Getting to Know the Data
 
 ***
 
+## Data Overview
+
 The MMSE data separated by family history, was pulled from [kaggle.com Rabie El Kharoua (2024)](https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset). The group of patients with a family history of Alzheimer's contains 542 unique observations, while the other contains 1607 observations. The variable MMSE has scores ranging from 0-30, with the lower scores indicating a higher level of cognitive impairment. 
 
 ### Summary Statistics for Two Samples
 
-The table below provides initial summary statistics that are helpful in gaining a stronger understanding of the MMSE scores for both groups. Note the values provided have been rounded to two decimal places for interpretability purposes. 
+Let’s start with the basics. Here’s a snapshot of how MMSE scores stack up for both groups:
 
 | Family History Alzheimers | Mean | Median | Standard Deviation | Minimum | Maximum | First Quartile | Third Quartile | n |
 | ----------- | ----------- | -----|--------|--------------------|---------|---------|----------------|----------------|---|
@@ -54,11 +53,14 @@ The table below provides initial summary statistics that are helpful in gaining 
   <figcaption>Table 1: Summary Statistics</figcaption>
 </figure>
 
+The averages look similar, but let’s dig deeper.
+
+
 ### Check for Normality
 
 #### 1. Visualizing the Distributions
 
-Normal probability plots and histograms can show whether each group follows a normal distribution. Both visualizations helped to conclude that the data provided is not normally distributed, and rather seems to follow a uniform distribution. 
+Using histograms and Q-Q plots, we explored the distribution of MMSE scores for both groups. Spoiler alert: it’s not normal.
 
 <figure>
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/435_report1/qqplots.png" alt="Description of image" style="width:600px;height:350px;">
@@ -76,7 +78,8 @@ Normal probability plots and histograms can show whether each group follows a no
 
 #### 2. Shapiro-Wilk Test
 
-The null hypothesis for a Shapiro-Wilk test assumes that the data is normally distributed. 
+For a formal check, we ran a Shapiro-Wilk test:
+
 
 | Shapiro-Wilk Normality Test |
 | ------------------------------|
@@ -96,23 +99,13 @@ The null hypothesis for a Shapiro-Wilk test assumes that the data is normally di
  <figcaption>Table 3: MMSE Scores for Patients With a Family History of Alzheimer's </figcaption>
 </figure>
 
-With a p value lower than 0.05, we rejected the null hypothesis and concluded that the MMSE scores for both patient groups were not normally distributed.
+Since both p-values are below 0.05, we concluded that the data isn’t normally distributed.
+
 
 ### Check for Equal Variance
 
-An F test can be administered to check for equal variance between two groups.The ratios of the variances was close to 1 (~1.0268) so it could be concluded that the variances were equal.
+An F-test showed that the variances between the two groups are roughly equal (p-value = 0.6977), so we’re good to go on that front.
 
-`F test to compare two variances`
-`F = 1.0268   num. df = 541   denom. df = 1606   p-value = 0.6977`
-`alternative hypothesis: true ratio of variances is not equal to 1`
-`95 percent confidence interval: `
-`(0.8966642, 1.1814337) `
-`sample estimates `
-`ratio of variances = 1.02679  `
-
-### EDA Conclusions
-
-The EDA conducted in this section give valuable information about the distributions of our two samples, allowing for next steps to be taken in order to obtain meaningful results. We learned that our MMSE data within both groups is not normally distributed. This means that we are unable to use parametric statistical methods to derive results. Therefore, a different type of statistical method that does not include a normality assumption is required. 
 
 # Non-Parametric Tests for Significance
 
@@ -120,27 +113,20 @@ The EDA conducted in this section give valuable information about the distributi
 
 ### **1. Mann-Whitney Test**
 
-The Mann-Whitney test compared the ranks of the MMSE scores between groups with and without a family history of Alzheimer's disease. The null hypothesis for this test was that there is no difference in the distribution of MMSE scores for both groups, and the alternative was that there is a significant difference. 
+Given the non-normal data, we used the Mann-Whitney test to compare the two groups. This test ranks the data rather than relying on raw scores, making it robust for non-parametric situations.
 
-R code:
+Result:
 
-`wilcox.test(MMSE ~ FamilyHistoryAlzheimers, data = alz_data, alternative = 'two.sided')`
+- p-value: 0.4949
 
-output:
+- Conclusion: No significant difference in MMSE scores between groups.
 
-  `Wilcoxon rank sum test with continuity correction`
-  `data:  MMSE by FamilyHistoryAlzheimers`
-  `W = 426971, p-value = 0.4949`
-  `alternative hypothesis: true location shift is not equal to 04`
-
-
-With a p value of 0.4949, we failed to reject the null hypothesis and concluded that there is not a significant difference between the distribution of MMSE scores in the two groups.
 
 ### **2. Permutations and Randomized Combinations**
 
-To continue the analysis on the Alzheimer's Disease data, permutations and combination methods help to assess the difference in Mini-Mental State Examination (MMSE) scores between participants with and without a family history of Alzheimer's. A key reason why these methods are included is that permutation tests are not bound to any assumptions on the distribution of the data, and as previously noted, the data used in this analysis is not normally distributed. The goal is to explore how unusual the observed statistic acquired from the Mann-Whitney test is by testing if it occurred via random chance.
+To further test the significance of our results, we used permutation and randomized combination methods. By shuffling the data 1,000 times and recalculating the test statistic, we created a distribution of possible outcomes under the null hypothesis.
 
-Given that the sample size of my data is relatively large (2,149 participants) using the traditional permutations and combinations formulas would be ineffective in R, because the values derived would be extremely high (R classifies them as `Inf`). Due to this constraint, we drew samples to approximate the distribution of differences that could be expected under the null hypothesis.
+Both methods confirmed the findings of the Mann-Whitney test: the observed differences in MMSE scores are likely due to random chance.
 
 $H_0: \mu_{Family History} = \mu_{NoFamilyHistory}$
 
@@ -158,22 +144,31 @@ In this context, combinations describe the reshuffling of data groupings in a si
 
 Both the permutation and randomized combinations approaches support that our data follows what we would expect. The permutations and combinations density plots below illustrate the distributions of W statistics generated from 1,000 permutations and combinations. The original Mann-Whitney W statistic represented by the blue dashed line lies within 95% of both distributions, suggesting there is not a deviation from the expected outcome if the two family history groups were similar. 
 
-# graphs
-
-### Results
-
-As recorded in the table above, both the permutation and combination tests produced p-values of `r results_perm$p_value` and `r results_comb$p_value`, which exceed the statistical significance threshold of 0.05. The confidence intervals for the W statistic include the null hypothesis value, further supporting the conclusion that the observed differences are likely due to random variation.
 
 # Concluding Remarks
 
 ***
 
-After taking a closer look during the EDA portion of this report, the data did not appear to be normally distributed. By separating the data and examining Q-Q Plots, Shapiro-Wilk normality tests and distribution histograms, all failed to show a normal distribution. With this information, using the Mann-Whitney test and permutations/combinations made the most sense to gain a stronger understanding of the underlying relationships in the data. These tests led to failing to reject the hypothesis that there was no significant difference between patients with and without family history of Alzheimer's MMSE scores. 
+So, what did we learn?
 
-In this analysis, pursuing a nonparametric method was the best option because of the nature of the data. However, in times where data is already normally distributed or can be easily transformed, it may be wiser to use parametric processes to make conclusions as there may be higher power. Despite this trade-off, we were still able to gain some valuable insight, and learn something new about the data.
+- The data isn’t normally distributed, so non-parametric tests were necessary.
+
+- Across all tests, we found no significant difference in MMSE scores between individuals with and without a family history of Alzheimer’s.
+
+Does this mean family history doesn’t matter? Not necessarily. Cognitive function is influenced by a web of factors, and MMSE scores are just one piece of the puzzle.
+
+
 
 # Recommendations for Future Studies
 
 ***
 
-Although this analysis was unable to find significant differences between the two groups, there may still be derivable significant differences within this dataset. I would encourage future research looking into how `Diagnosis` might be able to be predicted from other features recorded in the dataset. Further EDA or additional research to determine important features is also encouraged, as there is still so much to learn about Alzheimer's disease. 
+While this analysis didn’t uncover significant differences, there’s still plenty of potential in the dataset. Here are some ideas for future research:
+
+1. Predictive Modeling: Can features like age, education, or diagnosis predict MMSE scores?
+
+2. Subgroup Analysis: Are there hidden patterns within specific age groups or ethnicities?
+
+3. Longitudinal Studies: How does family history influence cognitive decline over time?
+
+Alzheimer’s research is a complex but essential field, and every study—whether it finds a significant result or not—helps us get closer to understanding and combating this disease.
