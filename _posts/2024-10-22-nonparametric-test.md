@@ -14,7 +14,8 @@ display_image: false  # change this to true to display the image below the banne
 
 ### Motivation
 
-<p class="intro"><span class="dropcap">A</span>lzheimer's disease is a global challenge. This neurodegenerative disorder, responsible for 60-80% of dementia cases, profoundly affects memory and cognitive function. While researchers and medical professionals work tirelessly to unravel its mysteries, tools like the Mini-Mental State Exam (MMSE) help track cognitive decline.
+<p class="intro"><span class="dropcap">A</span>lzheimer's disease is a global challenge. This neurodegenerative disorder, responsible for 60-80% of dementia cases, profoundly affects memory and cognitive function. While researchers and medical professionals work tirelessly to unravel its mysteries, tools like the Mini-Mental State Exam (MMSE) help track cognitive decline.</p>
+
 
 The MMSE is a 30-point questionnaire that measures cognitive skills like memory, orientation, and attention. A low score means severe impairment, but MMSE scores alone aren’t enough for a full diagnosis. Still, they’re invaluable for monitoring progress and tailoring care plans.
 
