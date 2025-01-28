@@ -9,6 +9,8 @@ display_image: false  # change this to true to display the image below the banne
 
 # Introduction
 
+***
+
 ## Problem Statement
 
 Let’s talk about food affordability—a challenge that’s hitting home for many families across the United States. The struggle is especially real for single mothers, who often juggle the dual responsibilities of breadwinning and caregiving. For single moms in California, this issue is even more pressing, as the state’s sky-high cost of living leaves little wiggle room for essentials like groceries.
@@ -22,6 +24,8 @@ In this post, we’re diving into the numbers to see if we can predict food affo
 3. How these insights could spark changes in policy to create a more equitable future.
 
 # Exploratory Data Analysis
+
+***
 
 To make sense of the challenge, we start with the raw data. Think of this as our foundation—it’s where we look for patterns, trends, and surprises.
 
@@ -50,9 +54,9 @@ So what does the data tell us? Let’s break it down.
 
 One striking pattern? Larger family sizes mean higher food costs, which makes sense. But when you factor in income disparities by ethnicity, the affordability gap becomes even clearer.
 
-
-
 # Methods
+
+***
 
 ## Feature Engineering
 
@@ -78,6 +82,8 @@ Several supervised learning models were tested on this data to test the relation
 *Table 5: Supervised Learning Models*
 
 # Discussion on Model Selection
+
+***
 
 ## Why XGBoost Wins
 
@@ -126,18 +132,18 @@ A SHAP summary plot helps to identify features by ranking them based on their av
 <div style="display: flex; justify-content: space-around; text-align: center;">
     <figure>
         <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/SHAP_summary.png" alt="Image 1" width="800" height = "250"/>
-        <figcaption  style="font-style: italic;">Figure 4: SHAP Global Feature Contributions</figcaption>
+        <figcaption  style="font-style: italic;">Figure 1: SHAP Global Feature Contributions</figcaption>
     </figure>
     <figure>
         <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/single_SHAP.png" alt="Image 2" width="800" height = "250"/>
-        <figcaption  style="font-style: italic;">Figure 5: SHAP Local Feature Contributions</figcaption>
+        <figcaption  style="font-style: italic;">Figure 2: SHAP Local Feature Contributions</figcaption>
     </figure>
 </div>
 
-As seen in Figure 4, the feature `median_income` is a substantially influential variable in the model. When `median_income` is high, overall predictions for `affordability_ratio` decrease slightly, and when `median_income` is low, `affordability_ratio` increases substantially. Similar relationships can be interpreted for the other features on the SHAP global feature contributions plot. 
+As seen in Figure 1, the feature `median_income` is a substantially influential variable in the model. When `median_income` is high, overall predictions for `affordability_ratio` decrease slightly, and when `median_income` is low, `affordability_ratio` increases substantially. Similar relationships can be interpreted for the other features on the SHAP global feature contributions plot. 
 
 
-To see the feature impacts on a specific prediction, the waterfall plot in Figure 5 shows that `median_income` contributes -0.22 to  `affordability_ratio`, pushing the prediction lower than the baseline expected prediction of 0.357. `geoname_Plainview CDP` contributes +0.05, also pulling the prediction for affordability up. These features in combination with the others captured in Figure 5 contribute to pushing the final prediction for this particular individual to a predicted affordability ratio of 0.261.
+To see the feature impacts on a specific prediction, the waterfall plot in Figure 2 shows that `median_income` contributes -0.22 to  `affordability_ratio`, pushing the prediction lower than the baseline expected prediction of 0.357. `geoname_Plainview CDP` contributes +0.05, also pulling the prediction for affordability up. These features in combination with the others captured in Figure 5 contribute to pushing the final prediction for this particular individual to a predicted affordability ratio of 0.261.
 
 SHAP is a powerful tool used to interpret the XGBoost predictions by qunatifying the contributions of each feature to the model's output. Key global features that are particularly influential were identified by SHAP's global analysis, and local analyses from the waterfall plot provide insight into individual predictions. These interpretations allow models to be applied to real-world implications by ensuring that the predictions are easily explainable. 
 
@@ -151,10 +157,10 @@ To detect affordability anomalies, the dataset can be clustered into 3 groups ba
 
 <figure style="text-align: center;">
     <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/first_anomaly.png" alt="Description" style="width:70%; height:350px;">
-    <figcaption style="font-style: italic;">Figure 6</figcaption>
+    <figcaption style="font-style: italic;">Figure 3: Anomaly Detection</figcaption>
 </figure>
 
-In Figure 6, anomalies are highlighted in red. These were calculated by selecting the top 1% of affordability ratios farthest from their respective cluster centroids. Such large distances indicate these individuals likely have unusually high ratios given the surrounding averages.
+In Figure 3, anomalies are highlighted in red. These were calculated by selecting the top 1% of affordability ratios farthest from their respective cluster centroids. Such large distances indicate these individuals likely have unusually high ratios given the surrounding averages.
 
 **II. Cluster Analysis on Affordability, Family Size, and Ethnic Group**
 
@@ -162,10 +168,10 @@ Analyzing clusters can be expanded to tracking multiple features. In this case, 
 
 <figure style="text-align: center;">
     <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/anomaly_2.png" alt="Description" style="width:70%; height:350px;">
-    <figcaption style="font-style: italic;">Figure 6</figcaption>
+    <figcaption style="font-style: italic;">Figure 4: Cluster Analysis</figcaption>
 </figure>
 
-In Figure 6, the cluster groupings are within close proximity of each other, but there is a clear visual difference from one ethnic group to the next. There are many iterations of this type of subgroup clustering that would provide valuable insights regarding various factors. Providing this type of analysis can be used to inform certain political interventions to help subgroups that would benefit from government action. 
+In Figure 4, the cluster groupings are within close proximity of each other, but there is a clear visual difference from one ethnic group to the next. There are many iterations of this type of subgroup clustering that would provide valuable insights regarding various factors. Providing this type of analysis can be used to inform certain political interventions to help subgroups that would benefit from government action. 
 
 ## Dimension Reduction
 
@@ -173,18 +179,18 @@ The topic used to understand this dataset is dimension reduction. This step is i
 
 **I. PCA**
 
-The first step is to fit `PCA` to the training predictors. SInce the goal is to find a linear transformation of the original data that mximizes the variance of the data, the graph below helps to visualize what this process looks like for our case. 
+The first step is to fit `PCA` to the training predictors. Since the goal is to find a linear transformation of the original data that mximizes the variance of the data, the graph below helps to visualize what this process looks like for our case. 
 
 <figure style="text-align: center;">
     <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/pca_variance.png" alt="Description" style="width:70%; height:350px;">
-    <figcaption style="font-style: italic;">Figure 8: PCA Maximize Variance Plot</figcaption>
+    <figcaption style="font-style: italic;">Figure 5: PCA Maximize Variance Plot</figcaption>
 </figure>
 
-From this, we know that to retain 95% of the variance, we need 203 components. The next step is to find the hyperplane that preserves the largest amount of the variance, and project the data onto that hyperplane. Figure 8 shows that PCA does capture some of the distrinctions between different affordability groupings, but is not ideal. 
+From this, we know that to retain 95% of the variance, we need 203 components. The next step is to find the hyperplane that preserves the largest amount of the variance, and project the data onto that hyperplane. Figure 6 shows that PCA does capture some of the distrinctions between different affordability groupings, but is not ideal. 
 
 <figure style="text-align: center;">
     <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/pca_plot.png" alt="Description" style="width:70%; height:350px;">
-    <figcaption style="font-style: italic;">Figure 8: PCA Labels</figcaption>
+    <figcaption style="font-style: italic;">Figure 6: PCA Labels</figcaption>
 </figure>
 
 
@@ -196,12 +202,14 @@ UMAP is an example of a manifold learning method to see how a non-linear dimensi
 
 <figure style="text-align: center;">
     <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/umap_plot.png" alt="Description" style="width:70%; height:350px;">
-    <figcaption style="font-style: italic;">Figure 9: UMAP Labels</figcaption>
+    <figcaption style="font-style: italic;">Figure 7: UMAP Labels</figcaption>
 </figure>
 
 Since UMAP is being used for visualization purposes in this report, a 2D representation of the dat is not extremely informative or useful. Additionally, UMAP took significantly longer than PCA which adds to the disadvantage of using it as the key dimension reduction technique for this analysis.
 
 # Conclusion and Next Steps
+
+***
 
 This analysis shed light on the intricate relationships between income, family size, ethnicity, and food affordability for single moms in California. Our findings suggest that regional disparities and systemic challenges—like low wages and high grocery costs—are major factors driving the affordability crisis.
 
