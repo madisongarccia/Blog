@@ -1,3 +1,4 @@
+---
 layout: post
 title:  "Machine Learning Exploration into Food Affordability"
 date: 2024-12-18
@@ -12,9 +13,7 @@ display_image: false  # change this to true to display the image below the banne
 
 Food affordability in the Unites States has reached an all-time low in recent years, and is a struggle that many individuals and families are no stranger to. This is a critical issue for single mothers especially, as it impacts their household's stability, health, and overall quality of life. In California, the average cost of living remains just barely achievable for many, and women-headed households face unique economic challenges because of it. An analysis of the food affordability for single-mother families in California can serve as a starting point for economic understanding, and opportunities for political intervention.
 
-## Aim of this Report
-
-This report aims to understand if food affordability for single mothers in California can be accurately explained and predicted by socioeconomic and demographic factors. By looking at data that includes information on food costs, annual income, regional demographics and economic indicators, this analysis seeks to accomplish the following:
+This post aims to understand if food affordability for single mothers in California can be accurately explained and predicted by socioeconomic and demographic factors. By looking at data that includes information on food costs, annual income, regional demographics and economic indicators, this analysis seeks to accomplish the following:
 
 1. Understand the relationship between income, location, ethnic group and food affordability.
 
