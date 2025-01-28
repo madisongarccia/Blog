@@ -4,7 +4,7 @@
 title: Data Science Blog
 description: "This is where I will be posting blogs about projects and ideas relating to Data Science." 
 author: Madison Garcia
-author_description: "I am a Data Science student at BYU, graduating in December, 2024. My passion for Data Science extends to fields related to machine learning, data wrangling, and data visualizations. Feel free to reach out via email of LinkedIn with any questions! " 
+author_description: "I am a Data Science student at BYU, graduating in December, 2024. My passion for Data Science extends to fields related to machine learning, data wrangling, and data visualizations. Feel free to reach out via email or LinkedIn with any questions! " 
 
 url: https://madisongarccia.github.io ## change this to https://yourusername.github.io
 baseurl: /Blog ## change this to the name of your blog repository
