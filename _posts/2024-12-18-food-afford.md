@@ -3,7 +3,7 @@ layout: post
 title:  "Machine Learning Exploration into Food Affordability"
 date: 2024-12-18
 description: working
-image: "/assets/img/"
+image: "/assets/img/groceries.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
 
