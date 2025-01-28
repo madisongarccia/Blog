@@ -2,9 +2,9 @@
 ## to customize your blog
 
 title: Data Science Blog
-description: "This is where I will be posting blogs about projects and ideas relating to Data Science." 
+description: "Dive into the world of data with me! This blog is a space where I unravel insights, share innovative projects, and explore the fascinating intersections of Data Science. From machine learning breakthroughs to captivating data visualizations, join me as we turn raw data into powerful stories and actionable ideas." 
 author: Madison Garcia
-author_description: "I am a Data Science student at BYU, graduating in December, 2024. My passion for Data Science extends to fields related to machine learning, data wrangling, and data visualizations. Feel free to reach out via email or LinkedIn with any questions! " 
+author_description: "Hi, I am Madison Garcia! A proud graduate of BYU with a B.S. in Statistics and a passion for all things Data Science. My work delves into machine learning, data wrangling, and creating visually compelling insights. Whether I am crafting models or uncovering patterns in complex datasets, I thrive on solving problems and making data accessible. Connect with me on LinkedIn or drop me an email—let's talk about the exciting ways data shapes our world!"
 
 url: https://madisongarccia.github.io ## change this to https://yourusername.github.io
 baseurl: /Blog ## change this to the name of your blog repository
