@@ -11,21 +11,21 @@ display_image: false  # change this to true to display the image below the banne
 
 ## Problem Statement
 
-Food affordability in the Unites States has reached an all-time low in recent years, and is a struggle that many individuals and families are no stranger to. This is a critical issue for single mothers especially, as it impacts their household's stability, health, and overall quality of life. In California, the average cost of living remains just barely achievable for many, and women-headed households face unique economic challenges because of it. An analysis of the food affordability for single-mother families in California can serve as a starting point for economic understanding, and opportunities for political intervention.
+Let’s talk about food affordability—a challenge that’s hitting home for many families across the United States. The struggle is especially real for single mothers, who often juggle the dual responsibilities of breadwinning and caregiving. For single moms in California, this issue is even more pressing, as the state’s sky-high cost of living leaves little wiggle room for essentials like groceries.
 
-This post aims to understand if food affordability for single mothers in California can be accurately explained and predicted by socioeconomic and demographic factors. By looking at data that includes information on food costs, annual income, regional demographics and economic indicators, this analysis seeks to accomplish the following:
+In this post, we’re diving into the numbers to see if we can predict food affordability for single mothers in California using socioeconomic and demographic factors. Here’s what we aim to uncover:
 
-1. Understand the relationship between income, location, ethnic group and food affordability.
+1. How income, location, and ethnicity tie into food affordability.
 
-2. Develop predictive machine learning models on food affordability to income ratios.
+2. The potential of machine learning models to predict food costs.
 
-3. Address how these insights can influence policy changes and improve economic outcomes in the future. 
+3. How these insights could spark changes in policy to create a more equitable future.
 
 # Exploratory Data Analysis
 
-To fully understand the important factors that may influence affordability, we must first look at the raw data. This section gives an overview of the key variables by identifying relevant distributions and variations within the data. These summary statistics act as a foundation for deciding what the potential predictors of affordability could be. 
+To make sense of the challenge, we start with the raw data. Think of this as our foundation—it’s where we look for patterns, trends, and surprises.
 
-The dataset includes the following features:
+Here’s what we’re working with:
 
 - `affordability_ratio` (numeric - target variable) Ratio of food cost to household income         
 - `median_income` (numeric) Median household income   
@@ -111,43 +111,13 @@ These key findings from the EDA uphold that there is a complex relationship betw
 
 ## Feature Engineering
 
-Effective feature engineering for this dataset includes transforming the raw data obtained into meaningful, usable representations that can be fed into a model for accurate predictions. This section will identify the steps taken to engineer features effectively - specifically the process of enhancing relationships and providing more location information. 
+Data transformation is where the magic happens. Here’s how we made the raw data ready for modeling:
 
-**1. Add Latitude and Longitude**
+1. Added Latitude & Longitude: More precise geographic details give our analysis a local edge.
 
-The original dataset used for this report did not include coordinate information, but it can be helpful to include these features to visualize the regions this exploration focuses on. To gather this information, I imported a csv file from GitHub that contains all of the major counties, zipcodes, and coordinates in California. Using a list of counties in the original data, I mapped those names to the counties in the csv file and merged their corresponding latitude and longitude values. 
+2. Introduced a Food Cost Index: By comparing food costs to the national average, we can see where California single moms stand relative to the rest of the country.
 
-**2. Food Cost Index**
-
-The Food Cost Index is a measurement from the Consumer Price Index (CPI) used to understand the yearly costs of food in the United States. To assess where the women in this dataset stand in regards to the national average, the `food_cost_index` variable was calculated by dividing `cost_yr` by the national average cost of food. This value was calculated by averaging the median cost of food for high, medium, and low income households. ([national average source](https://www.ers.usda.gov/data-products/ag-and-food-statistics-charting-the-essentials/food-prices-and-spending/))
-
-
-|          | `latitude` | `longitude` | `food_cost_index` |
-|----------|------------|------------|-------------------|
-| count | 291717 | 291717 | 264366 |
-| mean | 35.218 | -116.352 | 72.955  |
-| standard deviation | 2.655 | 8.745 | 13.771 |
-| minimum | 26.13 | -123.73 | 29.704 | 
-| Q2 | 33.97 | -119.67 | 63.978 |
-| median | 34.06 | -118.26 | 71.594 | 
-| Q4 | 36.75 | -117.32 | 79.893 |
-| maximum | 48.92 | -71.35 | 161.904 |
-
-*Table 4: Additional Numeric Data Summary Statistics*
-
-### Preprocessing
-
-**4. Handling Categorical Features**
-
-All categorical features must be encoded into numeric formats that the computer can process when using modelling techniques. To do so, the [`OneHotEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) package from the [`sklearn`](https://scikit-learn.org/stable/) module is imported and fit to the predictors after they have been split into training and testing sets. This encoder works by creating binary columns for every unique category in all the categorical features contained in the data. 
-
-**5. Handling Numeric Features**
-
-Similarly to the categorical features, numeric features also need some preprocessing before getting passed into relevant models. Since this analysis deals with features that are likely very skewed, the predictors need to be scaled using the `StandardScaler` package also from `sklearn`. 
-
-**6. Handling Missing Values**
-
-Referring back to Tables 2, 3 and 4, there are a handful of missing values that need to be handled before running any models. Using Scikit-Learn's `SimpleImputer` package, the missing numeric values can be filled with the average value of the given feature, and the most frequent value can be filled in categorical features. 
+3. Handled Missing Data: Using imputation, we filled gaps without losing valuable insights.
 
 ## Supervised Learning Models
 
@@ -166,23 +136,13 @@ Several supervised learning models were tested on this data to test the relation
 
 # Discussion on Model Selection
 
-## Notable Patterns Across Models
+## Why XGBoost Wins
 
-**1. Tree-Based Models Outperform Linear Models**
+- Accurate Predictions: It captured the nuances of the data better than linear models.
 
-As recorded in Table 5, the  Decision Tree and XGBoost models outperformed Ridge Regression - indicating that there likely is not a strong linear relationship between the features. 
+- Efficiency: It’s faster than deep learning models while still delivering top-notch results.
 
-**2. Single Model Vs. Ensemble Method**
-
-While both the Decision Trees and XGBoost performed well, XGBoost's built-in regularization made it robust to overfitting, and more accurate. The DNN was flexible and handled the patterns in the data well, but it failed to outperform XGBoost, indicating that it may not be complex enough. While more layers and complexity could be added to this model, it is currently more computationally expensive than XGBoost, and adding more dimensions would only add to this time disparity. 
-
-**3. Computational Costs**
-
-K Nearest Neighbors (KNN) yieled a high computational cost because it relies heavily on time-consuming distance calculations for each prediction. XGBoost was not the fastest model, but offered a good trade-off between runtime and predictive power. 
-
-# Detailed Discussion on Best Model
-
-After weighing all of the benefits and disadvantages of each of the models explored, the XGBoost model has proven to be the *best* based on its rMSE score, total time, and inherent ability to generalize well to new data. 
+- Interpretable Insights: Tools like SHAP help explain its predictions, making it easy to translate results into actionable steps.
 
 ## XGBoost Hyperparameter Tuning
 
@@ -300,10 +260,14 @@ Since UMAP is being used for visualization purposes in this report, a 2D represe
 
 # Conclusion and Next Steps
 
-This report used machine learning techniques to analyze and predict the nature of affordality ratios among women-headed households in California based on income and additional demographic information. After contrasting multiple different kinds of models, XGBoost proved to be the most effective as it captured the complexity of the data and provided reliable predictions. An analysis of feature importance with SHAP reinforced the strong impact of income and geographic location on affordability. Anomaly detection helped highlight outliers and unique cases of individuals who are likely higher earners or spend less on food than the majority of the women sampled. 
+This analysis shed light on the intricate relationships between income, family size, ethnicity, and food affordability for single moms in California. Our findings suggest that regional disparities and systemic challenges—like low wages and high grocery costs—are major factors driving the affordability crisis.
 
-In the future, there could be stronger integration of geographic information such as detailed neighborhood or zip code-level data, to facilitate more thorough spatial analyses of affordability. This would enable the identification of hyper-local patterns and provide actionable insights for place-based interventions. It may also be useful to test additional ensemble approaches, refine the anomaly detection process to uncover subgroup-specific challenges, and analyze interactions between demographic factors and affordability.
+## What’s Next?
 
-## Practical Implications
+1. Policy Impacts: Use this data to guide subsidies or expand food assistance programs in high-need areas.
 
-To support policymakers and government officials in California, this analysis underscores the need to address regional disparities in affordability, which can be directly tied to geographic location, income, and high grocery prices. Policymakers could use insights from this study to identify high-need areas and allocate resources accordingly. For example, targeted subsidies or food assistance programs could be expanded to regions with the highest affordability challenges, as identified by this analysis. Additionally, addressing systemic barriers to economic mobility, such as access to affordable housing and higher-paying job opportunities in underperforming regions, should be a priority.
+2. Refining the Model: Incorporate hyper-local data (like zip codes) for sharper insights.
+
+3. Advocacy: Push for systemic changes, like better access to affordable housing and higher-paying jobs.
+
+Food affordability isn’t just about numbers—it’s about ensuring that every mom can provide for her family without breaking the bank. By digging into the data, we can take the first steps toward a more equitable future.
