@@ -127,11 +127,11 @@ A SHAP summary plot helps to identify features by ranking them based on their av
 
 <div style="display: flex; justify-content: space-around; text-align: center;">
     <figure>
-        <img src="/assets/img/plots/SHAP_summary.png" alt="Image 1" width="800" height = "250"/>
+        <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/SHAP_summary.png" alt="Image 1" width="800" height = "250"/>
         <figcaption  style="font-style: italic;">Figure 4: SHAP Global Feature Contributions</figcaption>
     </figure>
     <figure>
-        <img src="/assets/img/plots/single_SHAP.png" alt="Image 2" width="800" height = "250"/>
+        <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/single_SHAP.png" alt="Image 2" width="800" height = "250"/>
         <figcaption  style="font-style: italic;">Figure 5: SHAP Local Feature Contributions</figcaption>
     </figure>
 </div>
@@ -152,7 +152,7 @@ The next step in understanding the data and chosen model is to find observations
 To detect affordability anomalies, the dataset can be clustered into 3 groups based on affordability. This clustering techniques helps with uncovering general patterns in the distribution of the target, while outlining extreme cases to be aware of.
 
 <figure style="text-align: center;">
-    <img src="/assets/img/plots/first_anomaly.png" alt="Description" style="width:70%; height:350px;">
+    <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/first_anomaly.png" alt="Description" style="width:70%; height:350px;">
     <figcaption style="font-style: italic;">Figure 6</figcaption>
 </figure>
 
@@ -163,7 +163,7 @@ In Figure 6, anomalies are highlighted in red. These were calculated by selectin
 Analyzing clusters can be expanded to tracking multiple features. In this case, looking at family size and ethnicity can uncover important affordability subgroups. 
 
 <figure style="text-align: center;">
-    <img src="/assets/img/plots/anomaly_2.png" alt="Description" style="width:70%; height:350px;">
+    <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/anomaly_2.png" alt="Description" style="width:70%; height:350px;">
     <figcaption style="font-style: italic;">Figure 6</figcaption>
 </figure>
 
@@ -178,14 +178,14 @@ The topic used to understand this dataset is dimension reduction. This step is i
 The first step is to fit `PCA` to the training predictors. SInce the goal is to find a linear transformation of the original data that mximizes the variance of the data, the graph below helps to visualize what this process looks like for our case. 
 
 <figure style="text-align: center;">
-    <img src="/assets/img/plots/pca_variance.png" alt="Description" style="width:70%; height:350px;">
+    <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/pca_variance.png" alt="Description" style="width:70%; height:350px;">
     <figcaption style="font-style: italic;">Figure 8: PCA Maximize Variance Plot</figcaption>
 </figure>
 
 From this, we know that to retain 95% of the variance, we need 203 components. The next step is to find the hyperplane that preserves the largest amount of the variance, and project the data onto that hyperplane. Figure 8 shows that PCA does capture some of the distrinctions between different affordability groupings, but is not ideal. 
 
 <figure style="text-align: center;">
-    <img src="/assets/img/plots/pca_plot.png" alt="Description" style="width:70%; height:350px;">
+    <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/pca_plot.png" alt="Description" style="width:70%; height:350px;">
     <figcaption style="font-style: italic;">Figure 8: PCA Labels</figcaption>
 </figure>
 
@@ -197,7 +197,7 @@ The new `X_train_pc` and `X_test_pc` could be used in the XGBoost model for impr
 UMAP is an example of a manifold learning method to see how a non-linear dimension reduction algorithm would perform on this data. There are multiple manifold learning options, but UMAP is generally faster than tSNE, another popular choice, and balances global versus local relationships better than tSNE as well. 
 
 <figure style="text-align: center;">
-    <img src="/assets/img/plots/umap_plot.png" alt="Description" style="width:70%; height:350px;">
+    <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/umap_plot.png" alt="Description" style="width:70%; height:350px;">
     <figcaption style="font-style: italic;">Figure 9: UMAP Labels</figcaption>
 </figure>
 
