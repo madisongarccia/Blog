@@ -2,7 +2,7 @@
 layout: post
 title:  "Machine Learning Exploration into Food Affordability"
 date: 2024-12-18
-description: working
+description: This post explores fod affordability inequalities among women-headed households in California using data-driven insights from machine learning models. The primary goal is to predict affordability ratios using features related to annual income, family demographics, and regional data. Additionally, the post includes anomaly detection to identify unique cases and SHAP analysis for feature interpretability.
 image: "/assets/img/groceries.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
