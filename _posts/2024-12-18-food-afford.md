@@ -37,75 +37,20 @@ Here’s what we’re working with:
 - `cost_yr` (numeric) Annual food costs    
 - `ave_fam_size` (numeric) Average family size - combined by race              
 
-With the variables defined above, the next step is to delve into the statistical properties of each, which includes their underlying distributions and variations. It is important to be aware of any potential outliers or missing data before selecting predictive features for future models. 
+So what does the data tell us? Let’s break it down.
 
-|          | `region_code` | `cost_yr` | `median_income` | `affordability_ratio`  | `ave_fam_size` | 
-|-----------|---------|-----------|----------|-------------|-------|
-| count | 295362 | 264366 | 101836 | 101836 |  280593 | 
-| mean | 11.388 | 7602.632 | 38038.998 | 0.325 | 3.294 |
-| standard deviation | 3.341 | 1435.062 | 27050.591 | 0.42 | 0.636 | 
-| minimum | 1 | 3095.425 | 2500 | 0.021 |  1.36 |
-| Q2 | 9 | 6667.128 | 22417 | 0.153 | 2.88 | 
-| median | 14 | 7460.84 | 33103 | 0.227 | 3.25 |
-| Q4 | 14 | 8325.618 | 46418 | 0.349 |  3.61 |
-| maximum | 14 | 16872.05 | 250000 | 4.852 |  7.2 | 
+| Metric | Example Insights |
+|--------|------------------|
+|Income | Median household income is just $33,103—way below the U.S. average of [$80,610 (2022).](https://www.census.gov/library/publications/2024/demo/p60-282.html) |
+| Affordability Ratios | Larger families have higher costs, but the struggle to keep food affordable spans all household sizes. |
+| Ethnicity & Location | Ethnicity and geography have a noticeable impact on both income and food affordability. |
 
-*Table 2: Numeric Data Summary Satistics - rounded for readability*
-
-<figure style="text-align: center;">
-    <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/correlation_matrix.png" alt="Correlation Matrix" style="width:70%; height:350px;">
-    <figcaption style="font-style: italic;">Figure 1: Correlation Matrix for Numeric Features</figcaption>
-</figure>
-
-It can be noted from Figure 1 that there is a strong, almost perfect correlation between several variables, namely `cost_yr` and `ave_fam_size`. 
-
-While not overwhelmingly apparent in the correlation matrix, there is also an important relationship between `median_income` and `ave_fam_size` that Figure 2 below illustrates.
-
-<figure style="text-align: center;">
-    <img src="assets/img/plots/income_fam_size_plot.png" alt="Description" style="width:70%; height:350px;">
-    <figcaption style="font-style: italic;">Figure 2: Scatterplot of Income Against Family Size</figcaption>
-</figure>
-
-Figure 2 reveals a particularly interesting trend: while the spread of the points seems to suggest that most women-headed households earn enough to afford food for their families, the red line superimposed on the graph highlights the unfortunate reality. The median annual income in this dataset is $33,103.00. This is significantly below the median annual household income in the United States which stood at [$80,610.00 as of 2022](https://www.census.gov/library/publications/2024/demo/p60-282.html).
+*Table 2: Summary Satistics*
 
 
-Although a majority of the data in this report is numeric, there are some categorical features that can still be examined. Table 3 below includes some summary statistics on these features. 
+One striking pattern? Larger family sizes mean higher food costs, which makes sense. But when you factor in income disparities by ethnicity, the affordability gap becomes even clearer.
 
-|  | `race_eth_name` | `geotype` | `geoname` | `county_name` |
-|--|-----------------|-----------|-----------|---------------|
-| count | 295371 | 295371 | 295371 | 295236 |
-| unique      | 9 | 4 | 1581 | 58 |
-|   top     | AIAN | PL | Franklin CDP | Los Angeles | 
-|   frequency     | 32819 | 298431 | 990 | 123966 | 
 
-*Table 3: Categorical Data Summary Satistics*
-
-By combining the numeric and categorical features together for EDA some key relationships not captured by the correlaiton matrix become apparent in the graphs below. 
-
-<div style="display: flex; justify-content: space-around; text-align: center;">
-    <figure>
-        <img src="/assets/img/plots/ethnic_afford.png" alt="Image 1" width="600"/>
-        <figcaption  style="font-style: italic;">Figure 3: Affordability by Ethnic Group</figcaption>
-    </figure>
-    <figure>
-        <img src="/assets/img/plots/mean_med_income_plot.png" alt="Image 2" width="600"/>
-        <figcaption  style="font-style: italic;">Figure 4: Income by Ethnic Group</figcaption>
-    </figure>
-</div>
-
-It appears that there is almost a perfect inverse relationship between affordability and income when accounting for ethnic group. 
-
-## EDA Key Findings 
-
-The Exploratory Data Analysis presented in this section was useful to begin understanding basic structures, patterns, and relationships within this dataset. The following is a brief summary of the most important EDA insights:
-
-- There is a strong positive correlation between `cost_yr` and `ave_fam_size` which makes sense, larger families tend to require a greater amount spent on groceries.
-
-- This data contains a wide range of annual income ($2,500 - $250,000), but is highly skewed.
-
-- There appears to be an inverse relationship between `affordability_ratio` and `median_income` when grouping by ethnic group. 
-
-These key findings from the EDA uphold that there is a complex relationship between income, family size, and food affordability among women-headed households in California. Moving forward, these insights will act as a foundation for finding a predictive model that best estimates affordability ratios based on economic and demographic factors. 
 
 # Methods
 
