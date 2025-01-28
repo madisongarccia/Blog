@@ -44,8 +44,9 @@ The MMSE data separated by family history, was pulled from [kaggle.com Rabie El 
 
 Let’s start with the basics. Here’s a snapshot of how MMSE scores stack up for both groups:
 
-| Family History Alzheimers | Mean | Median | Standard Deviation | Minimum | Maximum | First Quartile | Third Quartile | n |
-| ----------- | ----------- | -----|--------|--------------------|---------|---------|----------------|----------------|---|
+
+| Family History of Alzheimers | Mean | Median | Standard Deviation | Minimum | Maximum | First Quartile | Third Quartile | n |
+|---------------|-----|-------|--------------------|---------|---------|----------------|----------------|---|
 | No    |  14.68   | 14.20 | 8.59 | 0.01 | 29.99 | 7.13 | 22.09 | 1607 |
 | Yes   |  14.99  | 15.29 | 8.70 | 0.05 | 29.97 | 7.26 | 22.60 | 542 | 
 
@@ -80,23 +81,13 @@ Using histograms and Q-Q plots, we explored the distribution of MMSE scores for 
 
 For a formal check, we ran a Shapiro-Wilk test:
 
-
-| Shapiro-Wilk Normality Test |
-| ------------------------------|
-| W  Statistic | p-value  |
-| 0.95262 | < 2.2e-16 |
-
-<figure>
- <figcaption>Table 2: MMSE Scores for Patients Without a Family History of Alzheimer's</figcaption>
-</figure>
-
-| Shapiro-Wilk Normality Test|
-| ------------------------------|
-| W  Statistic | p-value  |
-| 0.0.95105 | 2.05e-12 |
+| Group | W Statistic | p-value |
+|-------|-------------|---------|
+| No Family History | 0.95262	| < 2.2e-16 |
+| Family History | 0.95105	| 2.05e-12 |
 
 <figure>
- <figcaption>Table 3: MMSE Scores for Patients With a Family History of Alzheimer's </figcaption>
+ <figcaption>Table 2: Shapiro Wilk Results</figcaption>
 </figure>
 
 Since both p-values are below 0.05, we concluded that the data isn’t normally distributed.
