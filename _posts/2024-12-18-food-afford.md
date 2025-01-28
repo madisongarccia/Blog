@@ -53,7 +53,7 @@ With the variables defined above, the next step is to delve into the statistical
 *Table 2: Numeric Data Summary Satistics - rounded for readability*
 
 <figure style="text-align: center;">
-    <img src="/assets/img/plots/correlation_matrix.png" alt="Correlation Matrix" style="width:70%; height:350px;">
+    <img src="{{site.url}}/{{site.baseurl}}/assets/img/plots/correlation_matrix.png" alt="Correlation Matrix" style="width:70%; height:350px;">
     <figcaption style="font-style: italic;">Figure 1: Correlation Matrix for Numeric Features</figcaption>
 </figure>
 
@@ -62,7 +62,7 @@ It can be noted from Figure 1 that there is a strong, almost perfect correlation
 While not overwhelmingly apparent in the correlation matrix, there is also an important relationship between `median_income` and `ave_fam_size` that Figure 2 below illustrates.
 
 <figure style="text-align: center;">
-    <img src="/assets/img/plots/income_fam_size_plot.png" alt="Description" style="width:70%; height:350px;">
+    <img src="assets/img/plots/income_fam_size_plot.png" alt="Description" style="width:70%; height:350px;">
     <figcaption style="font-style: italic;">Figure 2: Scatterplot of Income Against Family Size</figcaption>
 </figure>
 
